@@ -43,9 +43,9 @@ class User
      */
     static function getUser($id)
     {
-        $database = getConnector();
+        $pdo = getConnector();
         $query = 'SELECT * FROM users WHERE id = ?';
-        $stmt = $database->prepare($query);
+        $stmt = $pdo->prepare($query);
         $stmt->execute([$id]);
         $user = $stmt->fetch();
         $userAsObject = new User($user['id'], $user['username'], $user['password'], $user['name']);
@@ -74,11 +74,11 @@ class User
      */
     function save()
     {
-        $database = getConnector();
+        $pdo = getConnector();
         $query = 'INSERT INTO users (id, username, password, name) VALUES (?, ?, ?, ?)';
-        $stmt = $database->prepare($query);
+        $stmt = $pdo->prepare($query);
         $stmt->execute([$this->id, $this->username, $this->password, $this->name]);
 
-        return $database->lastInsertId();
+        return $pdo->lastInsertId();
     }
 }
