@@ -1,5 +1,8 @@
 {
     "autoload": {
+        "psr-4": {
+            "src\router\\": "router/"
+        },
         "files": [
             "models/user.php"
         ]
