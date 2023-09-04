@@ -1,4 +1,5 @@
 <?php
+namespace src\router;
 class Route{
     private $controller;
     private $method;
