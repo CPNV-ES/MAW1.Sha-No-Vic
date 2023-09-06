@@ -2,10 +2,8 @@
 namespace App\Routing;
 class Router{
     private $routes = [];
-    private $url;
-
-    public function __construct($url){
-        $this->url = $url;
+    public function __construct(){
+        $this->setRoutes();
     }
     public function setRoutes(){
         $routes = include('../routeConfig.php');
@@ -13,5 +11,15 @@ class Router{
             $this->routes[] = new Route($param['path'], $param['controller'], $param['method']);   
         }
         $this->routes = $routes;
+    }
+    //function to redirect to the right controller
+    public function redirect($path){
+        foreach ($this->routes as $route){
+            if($route->getPath() == $path){
+                $controller = $route->getController();
+                $method = $route->getMethod();
+                $controller->$method();
+            }
+        }
     }
 }
