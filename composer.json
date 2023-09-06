@@ -2,9 +2,6 @@
     "autoload": {
         "psr-4": {
             "App\\": "src/"
-        },
-        "files": [
-            "models/user.php"
-        ]
+        }
     }
 }
