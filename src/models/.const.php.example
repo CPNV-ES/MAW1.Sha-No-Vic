@@ -1,0 +1,17 @@
+<?php
+/**
+ * Title : .const file 
+ * Author : Montavon Victorien
+ * Verison : 1.0.0
+ * Date : 30.08.2023
+ */
+
+use Dotenv\Dotenv;
+
+ //TODO: Fill the following information for the databse, debug mode and other configuration, then rename the file to .const.php
+
+ $dotenv = Dotenv::createImmutable(__DIR__ . "/../");
+    $dotenv->load();
+    
+
+   

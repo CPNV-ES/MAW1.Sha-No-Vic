@@ -3,6 +3,7 @@ conception/
 
 ##### Environment
 .env
+.const.php
 
 ##### Windows
 # Windows thumbnail cache files
