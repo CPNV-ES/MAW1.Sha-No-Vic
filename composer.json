@@ -6,5 +6,8 @@
         "files": [
             "models/user.php"
         ]
+    },
+    "require": {
+        "paragonie/easydb": "^3"
     }
 }
