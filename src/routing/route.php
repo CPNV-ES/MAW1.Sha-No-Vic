@@ -4,14 +4,22 @@ class Route{
     private $controller;
     private $method;
     private $path;
-    private $params = [];
 
     public function __construct($path, $controller, $method){
         $this->path = $path;
         $this->controller = '../controllers/' . $controller . '.php';
         $this->method = $method;
-        $this->params = [];        
     }
+    public function getController(){
+        return $this->controller;
+    }
+    public function getMethod(){
+        return $this->method;
+    }
+    public function getPath(){
+        return $this->path;
+    }
+    /*
     public function matchUrl($url){
         $url = trim($url, '/');
         $path = trim($this->path, '/');
@@ -37,6 +45,5 @@ class Route{
             echo "Controller $this->controller does not exist";
         }
     }
-
-
+*/
 }
