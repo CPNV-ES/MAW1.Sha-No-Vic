@@ -8,6 +8,7 @@
         ]
     },
     "require": {
-        "paragonie/easydb": "^3"
+        "paragonie/easydb": "^3",
+        "vlucas/phpdotenv": "^5.5"
     }
 }
