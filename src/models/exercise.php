@@ -43,7 +43,7 @@ class Exercise
         return $this->status;
     }
 
-    // Save exercices to Database
+    // Save exercises to Database
 
     function save()
     {
@@ -69,26 +69,26 @@ class Exercise
 
     function update()
     {
-        // TODO: create function who update the exercice in th database
+        // TODO: create function who update the exercise in th database
         // Title is not modifiable after created, only label of question and answer
     }
 
     function beReady()
     {
-        //TODO: create a function who change the status of the exercice from building to answering
+        //TODO: create a function who change the status of the exercise from building to answering
         // cannot go backwards in status
     }
 
     function close()
     {
-        //TODO: create a function who change the status of the exercice from answering to closed
+        //TODO: create a function who change the status of the exercise from answering to closed
         // cannot go backwards in status
-        // once the exerices is closed the "user" can't answer anymore
+        // once the exercises is closed the "user" can't answer anymore
     }
 
     function delete()
     {
-        // TODO: create function who delete the exercice, question and answers accordingly 
+        // TODO: create function who delete the exercise, question and answers accordingly
 
     }
 }
