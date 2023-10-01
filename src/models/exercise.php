@@ -8,7 +8,7 @@
  * Version : 1.0
  */
 
-class Exercise
+class Exercise extends Model
 {
 
     protected $id;
@@ -17,7 +17,11 @@ class Exercise
     protected $title;
     protected $status;
 
-
+    /**
+     * Constructor of the exercice
+     * @param $id , @param $creation_date, @param $modification_date, @param $title, @param $status
+     * @return the object exercices
+     */
     public function __construct($id, $creation_date, $modification_date, $title, $status)
     {
         $this->id = $id;
@@ -43,29 +47,32 @@ class Exercise
         return $this->status;
     }
 
-    // Save exercises to Database
-
+    /**
+     * Save exercises to Database
+     * Return the last inserted id in the DB if new, return the id modified if it was already existing
+     */
     function save()
     {
-        $pdo   = $this->connect();
+        $pdo = $this->connect();
         $query = 'SELECT * FROM exercises WHERE id = ?';
-        $stmt  = $pdo->prepare($query);
+        $stmt = $pdo->prepare($query);
         $stmt->execute([$this->id]);
 
         if ($stmt->fetch() == null) {
             $query = 'INSERT INTO exercises (id, title, creation_date, modification_date, status) VALUES (?, ?, ?, ?, ?)';
-            $stmt  = $pdo->prepare($query);
+            $stmt = $pdo->prepare($query);
             $stmt->execute([$this->id, $this->title, date("Y-m-d H:i:s"), date("Y-m-d H:i:s"), $this->status]);
 
             return $pdo->lastInsertId();
         } else {
             $query = 'UPDATE exercises SET title=?, creation_date=?, modification_date=?, status=? WHERE id=?';
-            $stmt  = $pdo->prepare($query);
+            $stmt = $pdo->prepare($query);
             $stmt->execute([$this->title, $this->creation_date, date("Y-m-d H:i:s"), $this->status, $this->id]);
+
+            return $this->id;
         }
-    }
-        // TODO: test the save function
-    }
+    }// TODO: test the save function
+
 
     function update()
     {
