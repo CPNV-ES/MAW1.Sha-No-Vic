@@ -47,6 +47,11 @@ class Exercise extends Model
         return $this->status;
     }
 
+    function getCreationDate()
+    {
+        return $this->creation_date;
+    }
+
     /**
      * Save exercises to Database
      * Return the last inserted id in the DB if new, return the id modified if it was already existing
