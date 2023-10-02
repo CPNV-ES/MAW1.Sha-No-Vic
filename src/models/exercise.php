@@ -20,7 +20,7 @@ class Exercise extends Model
     /**
      * Constructor of the exercice
      * @param $id , @param $creation_date, @param $modification_date, @param $title, @param $status
-     * @return the object exercices
+     * @return void, create a new exercise
      */
     public function __construct($id, $creation_date, $modification_date, $title, $status)
     {
