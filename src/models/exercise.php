@@ -74,12 +74,6 @@ class Exercise extends Model
     }// TODO: test the save function
 
 
-    function update()
-    {
-        // TODO: create function who update the exercise in th database
-        // Title is not modifiable after created, only label of question and answer
-    }
-
     function beReady()
     {
         //TODO: create a function who change the status of the exercise from building to answering
