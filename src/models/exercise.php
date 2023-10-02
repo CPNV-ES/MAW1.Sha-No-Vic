@@ -52,6 +52,11 @@ class Exercise extends Model
         return $this->creation_date;
     }
 
+    public function getModificationDate()
+    {
+        return $this->modification_date;
+    }
+
     /**
      * Save exercises to Database
      * Return the last inserted id in the DB if new, return the id modified if it was already existing
