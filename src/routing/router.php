@@ -28,10 +28,22 @@ class Router
     {
         $this->redirect($this->getRouteByPath($path));
     }
+    public function redirectByRouteName($routeName)
+    {
+        $this->redirect($this->getRouteByRouteName($routeName));
+    }
     public function getRouteByPath($path)
     {
         foreach ($this->routes as $route) {
             if ($route->getPath() == $path) {
+                return $route;
+            }
+        }
+    }
+    public function getRouteByRouteName($routeName)
+    {
+        foreach ($this->routes as $route) {
+            if ($route->getRouteName() == $routeName) {
                 return $route;
             }
         }
