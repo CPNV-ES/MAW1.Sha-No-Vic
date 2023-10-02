@@ -31,23 +31,23 @@ class Exercise extends Model
         $this->status = $status;
     }
 
-    // All getter and setter
-    function getId()
+    // All getter for exercise
+    public function getId()
     {
         return $this->id;
     }
 
-    function getTitle()
+    public function getTitle()
     {
         return $this->title;
     }
 
-    function getStatus()
+    public function getStatus()
     {
         return $this->status;
     }
 
-    function getCreationDate()
+    public function getCreationDate()
     {
         return $this->creation_date;
     }
