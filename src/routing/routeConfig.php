@@ -12,6 +12,12 @@ return [
         'method' => 'exercises',
         'httpMethod' => 'GET'
     ],
+    'showExercise' => [ //http://exercice-looper.mycpnv.ch/ button : take an exercise
+        'path' => '/exercises/answering',
+        'controller' => 'exercisesController',
+        'method' => 'getAll',
+        'httpMethod' => 'GET'
+    ],
     'manageFields' => [ //http://exercice-looper.mycpnv.ch/exercises button : Manage fields
         'path' => '/exercises/:idExercise/fields',
         'controller' => 'exercisesController',
