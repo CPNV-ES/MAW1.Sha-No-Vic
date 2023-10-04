@@ -16,7 +16,7 @@ class Router
         $routes = include('routeConfig.php');
 
         foreach ($routes as $route => $param) {
-            $this->routes[] = new Route($route, $param['path'], $param['controller'], $param['method']);
+            $this->routes[] = new Route($route, $param['path'], $param['controller'], $param['method'], $param['httpMethod']);
         }
     }
     public function getRoutes()
@@ -32,6 +32,7 @@ class Router
     {
         $this->redirect($this->getRouteByRouteName($routeName));
     }
+    //TODO: check if the route exists before redirecting(same on name and path)
     public function getRouteByPath($path)
     {
         foreach ($this->routes as $route) {
