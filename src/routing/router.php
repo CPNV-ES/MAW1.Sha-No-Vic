@@ -36,7 +36,7 @@ class Router
     public function getRouteByPath($path)
     {
         foreach ($this->routes as $route) {
-            if ($route->getPath() == $path) {
+            if ($route->match($path)) {
                 return $route;
             }
         }
