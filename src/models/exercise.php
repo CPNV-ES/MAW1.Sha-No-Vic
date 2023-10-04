@@ -12,23 +12,24 @@ class Exercise extends Model
 {
 
     protected $id;
-    protected $creation_date;
-    protected $modification_date;
     protected $title;
     protected $status;
+    protected $creation_date;
+    protected $modification_date;
 
     /**
      * Constructor of the exercice
      * @param $id , @param $creation_date, @param $modification_date, @param $title, @param $status
      * @return void, create a new exercise
      */
-    public function __construct($id, $creation_date, $modification_date, $title, $status)
+    public function __construct($id, $title, $status, $creation_date, $modification_date)
     {
         $this->id = $id;
-        $this->creation_date = $creation_date;
-        $this->modification_date = $modification_date;
         $this->title = $title;
         $this->status = $status;
+        $this->creation_date = $creation_date;
+        $this->modification_date = $modification_date;
+
     }
 
     // All getter for exercise
