@@ -1,5 +1,5 @@
 <?php
-return[
+return [
     'Index' => [
         'path' => '/',
         'controller' => 'IndexController',
@@ -34,11 +34,6 @@ return[
         'path' => '/exercises/:idExercise/fields',
         'controller' => 'exercisesController',
         'method' => 'createExercise'
-    ],
-    'createField' => [ //http://exercice-looper.mycpnv.ch/exercises/:idExercise/fields button : create field
-        'path' => '/exercises/:idExercise/fields',
-        'controller' => 'exercisesController',
-        'method' => 'createField'
     ],
     'createField' => [ //http://exercice-looper.mycpnv.ch/exercises/:idExercise/fields button : create field
         'path' => '/exercises/:idExercise/fields',
