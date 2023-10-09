@@ -15,18 +15,19 @@ abstract class Model
     protected $db;
     protected $dbuser;
     protected $dbpassword;
+    protected $pdo;
 
 
-    public function connect()
+    public static function getInstance()
     {
-        $this->host = $_ENV['DB_HOST'];
-        $this->dbname = $_ENV['DB_DATABASE'];
-        $this->dbuser = $_ENV['DB_USERNAME'];
-        $this->dbpassword = $_ENV['DB_PASSWORD'];
+        $host = $_ENV['DB_HOST'];
+        $dbname = $_ENV['DB_DATABASE'];
+        $dbuser = $_ENV['DB_USERNAME'];
+        $dbpassword = $_ENV['DB_PASSWORD'];
 
         try {
-            $dsn = "mysql:host=$this->host;dbname=$this->dbname";
-            $pdo = new PDO($dsn, $this->dbuser, $this->dbpassword);
+            $dsn = "mysql:host=$host;dbname=$dbname";
+            $pdo = new PDO($dsn, $dbuser, $dbpassword);
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             return $pdo;
         } catch (PDOException $e) {
