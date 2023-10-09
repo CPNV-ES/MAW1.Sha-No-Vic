@@ -33,6 +33,20 @@ class Exercise extends Model
     }
 
     // All getter for exercise
+
+    /**
+     * Method to get all exercises from database
+     * @return array of exercises
+     * @throws Exception
+     */
+    public function getAll()
+    {
+        $query = 'SELECT * FROM exercises';
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_CLASS, Exercise::class);
+    }
+
     public function getId()
     {
         return $this->id;
