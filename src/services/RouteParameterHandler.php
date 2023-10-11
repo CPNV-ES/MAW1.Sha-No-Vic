@@ -25,4 +25,14 @@ class RouteParameterHandler
         return $ids;
     }
 
+
+    public function routeTemplateFromURL($url){
+        $url = explode('/', $url);
+        foreach ($url as $key => $value) {
+            if (is_numeric($value)) {
+                $url[$key] = ':id';
+            }
+        }
+        return implode('/', $url);
+    }
 }
