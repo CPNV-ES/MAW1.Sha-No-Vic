@@ -14,4 +14,15 @@ class RouteParameterHandler
         return implode('/', $url);
     }
 
+    public function extractIdFromURL($url){
+        $url = explode('/', $url);
+        $ids = [];
+        foreach ($url as $key => $value) {
+            if (is_numeric($value)) {
+                $ids[] = $value;
+            }
+        }
+        return $ids;
+    }
+
 }
