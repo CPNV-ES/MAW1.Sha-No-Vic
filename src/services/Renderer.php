@@ -40,4 +40,16 @@ class Renderer
         include($view);
         return ob_get_clean();
     }
+
+    public function view($name)
+    {
+        $filename = "/src/views/" . $name . ".view.php";
+        if (file_exists($filename)) {
+            require $filename;
+        } else {
+
+            $filename = "/src/views/404.view.php";
+            require $filename;
+        }
+    }
 }
