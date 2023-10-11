@@ -1,0 +1,38 @@
+main.container {
+  margin-top: 5rem;
+}
+
+header.heading {
+  height: 5rem;
+  color: white;
+  display: block;
+  left: 0;
+  max-width: 100%;
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 100%;
+  z-index: 1;  
+}
+header.heading section {
+  display: flex;
+  height: 5rem;
+}
+
+header.heading img {
+  height: 100%;
+}
+header.heading .exercise-label {
+  margin: auto;
+  margin-left: 2rem;
+}
+header.heading .exercise-title, header.heading .exercise-label a {
+  font-weight: bold;
+}
+header.heading .exercise-label a {
+  color: white;
+}
+header.heading .exercise-label a:hover {
+  color: #606c76;
+}
+

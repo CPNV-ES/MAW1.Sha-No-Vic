@@ -1,0 +1,28 @@
+/*
+  Place all the styles related to the matching controller here.
+  They will automatically be included in application.css.
+*/
+
+
+.answer i.empty {
+  /*color: rgba(225, 111, 124, 1);*/
+  color: rgba(244, 88, 102, 1);
+}
+
+.answer i.short {
+  color: rgba(65, 157, 120, 1);
+  /*
+  rgba(193, 174, 124, 1);
+  rgba(90, 113, 106, 1);
+  rgba(224, 164, 88, 1);
+  */
+}
+
+.answer i.filled {
+  color: rgba(65, 157, 120, 1);
+}
+
+dl.answer dt {
+  font-weight: bold;
+}
+
