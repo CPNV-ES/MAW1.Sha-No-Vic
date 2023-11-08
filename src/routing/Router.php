@@ -3,6 +3,8 @@
 namespace App\Routing;
 
 use App\Routing\Route;
+use App\Services;
+use App\Services\RouteParameterHandler;
 
 class Router
 {
@@ -26,11 +28,8 @@ class Router
     //function to redirect to the right controller
     public function redirectByPath($path)
     {
-        $this->redirect($this->getRouteByPath($path));
-    }
-    public function redirectByRouteName($routeName)
-    {
-        $this->redirect($this->getRouteByRouteName($routeName));
+        $params = RouteParameterHandler::extractIdFromURL($path);
+        $this->redirect($this->getRouteByPath($path), $params);
     }
     //TODO: check if the route exists before redirecting(same on name and path)
     public function getRouteByPath($path)
@@ -41,26 +40,17 @@ class Router
             }
         }
     }
-    public function getRouteByRouteName($routeName)
-    {
-        foreach ($this->routes as $route) {
-            if ($route->getRouteName() == $routeName) {
-                return $route;
-            }
-        }
-    }
-    public function redirect(Route $route)
+    public function redirect(Route $route, $params = [])
     {
         $controllerName = $route->getController();
         $method = $route->getMethod();
-
         // Check if the controller class exists
         if (class_exists($controllerName)) {
             $controller = new $controllerName();
 
             // Check if the method exists within the controller class
             if (method_exists($controller, $method)) {
-                $controller->$method();
+                $controller->$method($params);
             } else {
                 // Handle method not found error
                 echo "Method not found in controller: $method";
