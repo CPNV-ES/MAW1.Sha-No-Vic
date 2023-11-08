@@ -3,10 +3,11 @@
 namespace App\Services;
 class Renderer
 {
+    private $head;
     private $header;
     private $footer;
 
-    public function __construct($header = './public/views/gabarit/header.php', $footer = './public/views/gabarit/footer.php')
+    public function __construct($header = '../../public/gabarit/header.php', $footer = '../../public/gabarit/footer.php', $head = '../../public/gabarit/head.php')
     {
         $this->head = $head;
         $this->header = $header;
@@ -21,11 +22,11 @@ class Renderer
      */
     public function createView($view, $data = [])
     {
-        //
-        $content = $this->renderView($view, $data);
-        $header = $this->renderView($this->header, $data);
-        $footer = $this->renderView($this->footer, $data);
-        return $header . $content . $footer;
+        $head = $this->insertDataInView($this->head, $data);
+        $content = $this->insertDataInView($view, $data);
+        $header = $this->insertDataInView($this->header, $data);
+        $footer = $this->insertDataInView($this->footer, $data);
+        return $head . $header . $content . $footer;
     }
 
     /**
@@ -34,7 +35,7 @@ class Renderer
      * @param array $data
      * @return string
      */
-    private function renderView($view, $data)
+    private function insertDataInView($view, $data)
     {
         ob_start();
         include($view);
