@@ -10,12 +10,13 @@
 
 namespace App\models;
 
+use Exception;
 use PDO;
 
 abstract class Model
 {
     protected static $pdo;
-
+    protected static $table;
     protected $host;
     protected $db;
     protected $dbuser;
@@ -47,5 +48,22 @@ abstract class Model
 
         }
 
+    }
+
+    /**
+     * Method to get all exercises from database
+     * @return array of exercises
+     * @throws Exception
+     */
+    public static function getAll()
+    {
+        if (self::$table == null) {
+            throw new Exception("Table does not exist");
+        } else {
+            $query = "SELECT * FROM " . self::$table;
+            $stmt = self::$pdo->prepare($query);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_CLASS, self::class);
+        }
     }
 }
