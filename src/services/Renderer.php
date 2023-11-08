@@ -7,7 +7,7 @@ class Renderer
     private $header;
     private $footer;
 
-    public function __construct($header = '../../public/gabarit/header.php', $footer = '../../public/gabarit/footer.php', $head = '../../public/gabarit/head.php')
+    public function __construct($head = '../views/gabarits/head.php', $header = '../views/gabarits/header.php', $footer = '../views/gabarits/footer.php')
     {
         $this->head = $head;
         $this->header = $header;
