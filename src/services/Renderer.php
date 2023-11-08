@@ -30,7 +30,7 @@ class Renderer
     }
 
     /**
-     * Render a view with data (insert data in the view)
+     * insert data in the view
      * @param string $view
      * @param array $data
      * @return string
@@ -40,5 +40,16 @@ class Renderer
         ob_start();
         include($view);
         return ob_get_clean();
+    }
+
+    /**
+     * Render and show a view with already inserted data
+     * @param string $view
+     * @param array $data
+     * @return string
+     */
+
+    public function renderView($view){
+        include $view;
     }
 }
