@@ -1,8 +1,11 @@
 <?php
+
+namespace App\Services;
+
 class RouteParameterHandler
 {
-
-    public function insertIdInURL($url, $ids){
+    public static function insertIdInURL($url, $ids)
+    {
         $url = explode('/', $url);
         $i = 0;
         foreach ($url as $key => $value) {
@@ -14,7 +17,8 @@ class RouteParameterHandler
         return implode('/', $url);
     }
 
-    public function extractIdFromURL($url){
+    public static function extractIdFromURL($url)
+    {
         $url = explode('/', $url);
         $ids = [];
         foreach ($url as $key => $value) {
@@ -25,8 +29,8 @@ class RouteParameterHandler
         return $ids;
     }
 
-
-    public function routeTemplateFromURL($url){
+    public static function routeTemplateFromURL($url)
+    {
         $url = explode('/', $url);
         foreach ($url as $key => $value) {
             if (is_numeric($value)) {
