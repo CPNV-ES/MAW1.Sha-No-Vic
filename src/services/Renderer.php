@@ -1,13 +1,14 @@
 <?php
 
 namespace App\Services;
+
 class Renderer
 {
     private $head;
     private $header;
     private $footer;
 
-    public function __construct($head = '../views/gabarits/head.php', $header = '../views/gabarits/header.php', $footer = '../views/gabarits/footer.php')
+    public function __construct($head = __DIR__ . '/../views/gabarits/head.php', $header = __DIR__ .  '/../views/gabarits/header.php', $footer =  __DIR__ . '/../views/gabarits/footer.php')
     {
         $this->head = $head;
         $this->header = $header;
@@ -22,6 +23,8 @@ class Renderer
      */
     public function createView($view, $data = [])
     {
+        //TODO : move the concatenation of the path in a function or other
+        $view = __DIR__ . '/' . $view;
         $head = $this->insertDataInView($this->head, $data);
         $content = $this->insertDataInView($view, $data);
         $header = $this->insertDataInView($this->header, $data);
@@ -49,7 +52,8 @@ class Renderer
      * @return string
      */
 
-    public function renderView($view){
-        include $view;
+    public function renderView($view)
+    {
+        echo $view;
     }
 }
