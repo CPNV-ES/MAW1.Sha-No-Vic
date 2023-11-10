@@ -8,8 +8,8 @@ return [
     ],
     'exercises' => [ //http://exercice-looper.mycpnv.ch/ button : Manage an exercise
         'path' => '/exercises',
-        'controller' => 'exercisesController',
-        'method' => 'exercises',
+        'controller' => 'ExerciseController',
+        'method' => 'index',
         'httpMethod' => 'GET'
     ],
     'showExercise' => [ //http://exercice-looper.mycpnv.ch/ button : take an exercise
