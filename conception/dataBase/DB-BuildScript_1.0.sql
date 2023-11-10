@@ -19,9 +19,9 @@ CREATE SCHEMA IF NOT EXISTS `exercise_looper` DEFAULT CHARACTER SET utf8;
 USE `exercise_looper`;
 
 -- -----------------------------------------------------
--- Table `exercise_looper`.`excercises`
+-- Table `exercise_looper`.`exercises`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `exercise_looper`.`excercises`
+CREATE TABLE IF NOT EXISTS `exercise_looper`.`exercises`
 (
     `id`                INT                                      NOT NULL AUTO_INCREMENT,
     `title`             TINYTEXT                                 NOT NULL,
@@ -39,16 +39,16 @@ CREATE TABLE IF NOT EXISTS `exercise_looper`.`excercises`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `exercise_looper`.`questions`
 (
-    `id`            INT                                                    NOT NULL AUTO_INCREMENT,
-    `excercises_id` INT                                                    NOT NULL,
-    `title`         VARCHAR(45)                                            NOT NULL,
-    `type`          ENUM ('single_line', 'single_line_list', 'multi_line') NOT NULL,
-    PRIMARY KEY (`excercises_id`),
+    `id`           INT                                                    NOT NULL AUTO_INCREMENT,
+    `exercises_id` INT                                                    NOT NULL,
+    `title`        VARCHAR(45)                                            NOT NULL,
+    `type`         ENUM ('single_line', 'single_line_list', 'multi_line') NOT NULL,
+    PRIMARY KEY (`exercises_id`),
     UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
-    INDEX `fk_questions_excercises1_idx` (`excercises_id` ASC) VISIBLE,
-    CONSTRAINT `fk_questions_excercises1`
-        FOREIGN KEY (`excercises_id`)
-            REFERENCES `exercise_looper`.`excercises` (`id`)
+    INDEX `fk_questions_exercises1_idx` (`exercises_id` ASC) VISIBLE,
+    CONSTRAINT `fk_questions_exercises1`
+        FOREIGN KEY (`exercises_id`)
+            REFERENCES `exercise_looper`.`exercises` (`id`)
             ON DELETE NO ACTION
             ON UPDATE NO ACTION
 )
@@ -63,14 +63,14 @@ CREATE TABLE IF NOT EXISTS `exercise_looper`.`fulfillments`
     `id`              INT         NOT NULL AUTO_INCREMENT,
     `timestamp`       TINYTEXT    NULL,
     `fulfillmentscol` VARCHAR(45) NULL,
-    `excercises_id`   INT         NOT NULL,
-    PRIMARY KEY (`id`, `excercises_id`),
+    `exercises_id`    INT         NOT NULL,
+    PRIMARY KEY (`id`, `exercises_id`),
     UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
     UNIQUE INDEX `fulfillmentscol_UNIQUE` (`fulfillmentscol` ASC) VISIBLE,
-    INDEX `fk_fulfillments_excercises_idx` (`excercises_id` ASC) VISIBLE,
-    CONSTRAINT `fk_fulfillments_excercises`
-        FOREIGN KEY (`excercises_id`)
-            REFERENCES `exercise_looper`.`excercises` (`id`)
+    INDEX `fk_fulfillments_exercises_idx` (`exercises_id` ASC) VISIBLE,
+    CONSTRAINT `fk_fulfillments_exercises`
+        FOREIGN KEY (`exercises_id`)
+            REFERENCES `exercise_looper`.`exercises` (`id`)
             ON DELETE NO ACTION
             ON UPDATE NO ACTION
 )
@@ -82,13 +82,13 @@ CREATE TABLE IF NOT EXISTS `exercise_looper`.`fulfillments`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `exercise_looper`.`answers`
 (
-    `id`                         INT         NOT NULL AUTO_INCREMENT,
-    `questions_id`               INT         NOT NULL,
-    `fulfillments_id`            INT         NOT NULL,
-    `fulfillments_excercises_id` INT         NOT NULL,
-    `answer`                     VARCHAR(45) NOT NULL,
-    PRIMARY KEY (`id`, `questions_id`, `fulfillments_id`, `fulfillments_excercises_id`),
-    INDEX `fk_questions_has_fulfillments_fulfillments1_idx` (`fulfillments_id` ASC, `fulfillments_excercises_id` ASC) VISIBLE,
+    `id`                        INT         NOT NULL AUTO_INCREMENT,
+    `questions_id`              INT         NOT NULL,
+    `fulfillments_id`           INT         NOT NULL,
+    `fulfillments_exercises_id` INT         NOT NULL,
+    `answer`                    VARCHAR(45) NOT NULL,
+    PRIMARY KEY (`id`, `questions_id`, `fulfillments_id`, `fulfillments_exercises_id`),
+    INDEX `fk_questions_has_fulfillments_fulfillments1_idx` (`fulfillments_id` ASC, `fulfillments_exercises_id` ASC) VISIBLE,
     INDEX `fk_questions_has_fulfillments_questions1_idx` (`questions_id` ASC) VISIBLE,
     UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
     CONSTRAINT `fk_questions_has_fulfillments_questions1`
@@ -97,8 +97,8 @@ CREATE TABLE IF NOT EXISTS `exercise_looper`.`answers`
             ON DELETE NO ACTION
             ON UPDATE NO ACTION,
     CONSTRAINT `fk_questions_has_fulfillments_fulfillments1`
-        FOREIGN KEY (`fulfillments_id`, `fulfillments_excercises_id`)
-            REFERENCES `exercise_looper`.`fulfillments` (`id`, `excercises_id`)
+        FOREIGN KEY (`fulfillments_id`, `fulfillments_exercises_id`)
+            REFERENCES `exercise_looper`.`fulfillments` (`id`, `exercises_id`)
             ON DELETE NO ACTION
             ON UPDATE NO ACTION
 )
