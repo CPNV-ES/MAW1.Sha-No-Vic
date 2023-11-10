@@ -28,7 +28,7 @@ class Router
     //function to redirect to the right controller
     public function redirectByPath($path)
     {
-        $params = RouteParameterHandler::extractIdFromURL($path);
+        $params['id'] = RouteParameterHandler::extractIdFromURL($path);
         $this->redirect($this->getRouteByPath($path), $params);
     }
     //TODO: check if the route exists before redirecting(same on name and path)
