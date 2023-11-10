@@ -15,9 +15,9 @@ use PDO;
 
 abstract class Model
 {
-    protected static $pdo;
+    public static $pdo;
     protected static $table;
-    protected $host;
+
     protected $db;
     protected $dbuser;
     protected $dbpassword;
@@ -30,10 +30,10 @@ abstract class Model
 
     public function __construct()
     {
-        $this->setupConnection();
+        self::setupConnection();
     }
 
-    public static function setupConnection(): void
+    public static function setupConnection()
     {
         $host = $_ENV['DB_HOST'];
         $dbname = $_ENV['DB_DATABASE'];
@@ -45,7 +45,7 @@ abstract class Model
             $pdo = new PDO($dsn, $dbuser, $dbpassword);
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             self::$pdo = $pdo;
-
+            return $pdo;
         }
 
     }
