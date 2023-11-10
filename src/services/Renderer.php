@@ -1,12 +1,14 @@
 <?php
 
 namespace App\Services;
+
 class Renderer
 {
+    private $head;
     private $header;
     private $footer;
 
-    public function __construct($header = './public/views/gabarit/header.php', $footer = './public/views/gabarit/footer.php')
+    public function __construct($head = __DIR__ . '/../views/gabarits/head.php', $header = __DIR__ .  '/../views/gabarits/header.php', $footer =  __DIR__ . '/../views/gabarits/footer.php')
     {
         $this->head = $head;
         $this->header = $header;
@@ -21,35 +23,37 @@ class Renderer
      */
     public function createView($view, $data = [])
     {
-        //
-        $content = $this->renderView($view, $data);
-        $header = $this->renderView($this->header, $data);
-        $footer = $this->renderView($this->footer, $data);
-        return $header . $content . $footer;
+        //TODO : move the concatenation of the path in a function or other
+        $view = __DIR__ . '/' . $view;
+        $head = $this->insertDataInView($this->head, $data);
+        $content = $this->insertDataInView($view, $data);
+        $header = $this->insertDataInView($this->header, $data);
+        $footer = $this->insertDataInView($this->footer, $data);
+        return $head . $header . $content . $footer;
     }
 
     /**
-     * Render a view with data (insert data in the view)
+     * insert data in the view
      * @param string $view
      * @param array $data
      * @return string
      */
-    private function renderView($view, $data)
+    private function insertDataInView($view, $data)
     {
         ob_start();
         include($view);
         return ob_get_clean();
     }
 
-    public function view($name)
-    {
-        $filename = "/src/views/" . $name . ".view.php";
-        if (file_exists($filename)) {
-            require $filename;
-        } else {
+    /**
+     * Render and show a view with already inserted data
+     * @param string $view
+     * @param array $data
+     * @return string
+     */
 
-            $filename = "/src/views/404.view.php";
-            require $filename;
-        }
+    public function renderView($view)
+    {
+        echo $view;
     }
 }
