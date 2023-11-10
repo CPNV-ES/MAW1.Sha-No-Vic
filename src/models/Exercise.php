@@ -8,12 +8,15 @@
  * Version : 1.0
  */
 
+namespace App\models;
 class Exercise extends Model
 {
 
+    protected static $table = 'exercises';
     protected $id;
     protected $title;
     protected $status;
+    //TODO: Use object DATETIME instead of string and use it with format to avoid conflict with the database
     protected $creation_date;
     protected $modification_date;
 
@@ -24,6 +27,7 @@ class Exercise extends Model
      */
     public function __construct($id, $title, $status, $creation_date, $modification_date)
     {
+        parent::__construct();
         $this->id = $id;
         $this->title = $title;
         $this->status = $status;
@@ -32,21 +36,7 @@ class Exercise extends Model
 
     }
 
-    // All getter for exercise
-
-    /**
-     * Method to get all exercises from database
-     * @return array of exercises
-     * @throws Exception
-     */
-    public function getAll()
-    {
-        $query = 'SELECT * FROM exercises';
-        $stmt = $this->pdo->prepare($query);
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_CLASS, Exercise::class);
-    }
-
+// getAll() coming from Model.php
     public function getId()
     {
         return $this->id;
@@ -78,7 +68,7 @@ class Exercise extends Model
      */
     function save()
     {
-        $pdo = $this->connect();
+        $pdo = self::$pdo;
         $query = 'SELECT * FROM exercises WHERE id = ?';
         $stmt = $pdo->prepare($query);
         $stmt->execute([$this->id]);
