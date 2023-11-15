@@ -6,21 +6,27 @@ return [
         'method' => 'index',
         'httpMethod' => 'GET'
     ],
+    'answerExercise' => [ //http://exercice-looper.mycpnv.ch/ button : take an exercise
+        'path' => '/exercises/answering',
+        'controller' => 'ExercisesController',
+        'method' => 'takeExercises',
+        'httpMethod' => 'GET'
+    ],
     'exercises' => [ //http://exercice-looper.mycpnv.ch/ button : Manage an exercise
         'path' => '/exercises',
-        'controller' => 'ExerciseController',
+        'controller' => 'ExercisesController',
         'method' => 'index',
         'httpMethod' => 'GET'
     ],
     'showExercise' => [ //http://exercice-looper.mycpnv.ch/ button : take an exercise
         'path' => '/exercises/answering',
-        'controller' => 'exercisesController',
+        'controller' => 'ExercisesController',
         'method' => 'getAll',
         'httpMethod' => 'GET'
     ],
     'manageFields' => [ //http://exercice-looper.mycpnv.ch/exercises button : Manage fields
         'path' => '/exercises/:idExercise/fields',
-        'controller' => 'exercisesController',
+        'controller' => 'xercisesController',
         'method' => 'manageFields',
         'httpMethod' => 'GET'
     ],
