@@ -39,7 +39,7 @@ class Exercise extends Model
      * @return array of exercises
      * @throws Exception
      */
-    public static function getAll($status)
+    public static function getAll($status): array
     {
         $query = "SELECT * FROM " . self::$table . " WHERE status = " . $status;
         $stmt = self::getConnection()->prepare($query);
