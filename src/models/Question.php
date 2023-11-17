@@ -8,26 +8,26 @@
  * Version : 1.0
  */
 
+namespace App\models;
+
 class Question
 {
-
-    protected $id;
     protected $label;
     protected $value_kind;
     protected $exercise_id;
 
-    public function __construct($id, $label, $value_kind, $exercise_id)
+    public function __construct($label, $value_kind, $exercise_id)
     {
-        $this->id = $id;
+        $this->exercise_id = $exercise_id;
         $this->label = $label;
         $this->value_kind = $value_kind;
-        $this->exercise_id = $exercise_id;
     }
 
     // All getter and setter
-    public function getId()
+
+    public function getLabel()
     {
-        return $this->id;
+        return $this->label;
     }
 
     function setLabel($newLabel)
@@ -35,19 +35,14 @@ class Question
         $this->label = $newLabel;
     }
 
-    public function getLabel()
+    public function getValueKind()
     {
-        return $this->label;
+        return $this->value_kind;
     }
 
     function setValueKind($newValueKind)
     {
         $this->value_kind = $newValueKind;
-    }
-
-    public function getValueKind()
-    {
-        return $this->value_kind;
     }
 
     public function getAQuestion($id)
@@ -72,7 +67,6 @@ class Question
 
     public function edit($id)
     {
-
         //TODO: create function who edit the question in the database
     }
 }
