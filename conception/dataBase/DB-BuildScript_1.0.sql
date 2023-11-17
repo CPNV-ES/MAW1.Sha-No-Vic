@@ -39,15 +39,15 @@ CREATE TABLE IF NOT EXISTS `exercise_looper`.`exercises`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `exercise_looper`.`questions`
 (
-    `id`          INT                                                    NOT NULL AUTO_INCREMENT,
-    `exercise_id` INT                                                    NOT NULL,
-    `title`       VARCHAR(45)                                            NOT NULL,
-    `type`        ENUM ('single_line', 'single_line_list', 'multi_line') NOT NULL,
-    PRIMARY KEY (`exercise_id`),
+    `id`           INT                                                    NOT NULL AUTO_INCREMENT,
+    `exercises_id` INT                                                    NOT NULL,
+    `title`        VARCHAR(45)                                            NOT NULL,
+    `type`         ENUM ('single_line', 'single_line_list', 'multi_line') NOT NULL,
+    PRIMARY KEY (`exercises_id`),
     UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
-    INDEX `fk_questions_exercises1_idx` (`exercise_id` ASC) VISIBLE,
+    INDEX `fk_questions_exercises1_idx` (`exercises_id` ASC) VISIBLE,
     CONSTRAINT `fk_questions_exercises1`
-        FOREIGN KEY (`exercise_id`)
+        FOREIGN KEY (`exercises_id`)
             REFERENCES `exercise_looper`.`exercises` (`id`)
             ON DELETE NO ACTION
             ON UPDATE NO ACTION
