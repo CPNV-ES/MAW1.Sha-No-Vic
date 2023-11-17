@@ -60,13 +60,11 @@ CREATE TABLE IF NOT EXISTS `exercise_looper`.`questions`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `exercise_looper`.`fulfillments`
 (
-    `id`              INT         NOT NULL AUTO_INCREMENT,
-    `timestamp`       TINYTEXT    NULL,
-    `fulfillmentscol` VARCHAR(45) NULL,
-    `exercises_id`    INT         NOT NULL,
+    `id`           INT      NOT NULL AUTO_INCREMENT,
+    `timestamp`    TINYTEXT NULL,
+    `exercises_id` INT      NOT NULL,
     PRIMARY KEY (`id`, `exercises_id`),
     UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
-    UNIQUE INDEX `fulfillmentscol_UNIQUE` (`fulfillmentscol` ASC) VISIBLE,
     INDEX `fk_fulfillments_exercises_idx` (`exercises_id` ASC) VISIBLE,
     CONSTRAINT `fk_fulfillments_exercises`
         FOREIGN KEY (`exercises_id`)
