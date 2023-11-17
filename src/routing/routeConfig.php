@@ -26,7 +26,7 @@ return [
     ],
     'manageFields' => [ //http://exercice-looper.mycpnv.ch/exercises button : Manage fields
         'path' => '/exercises/:idExercise/fields',
-        'controller' => 'xercisesController',
+        'controller' => 'ExercisesController',
         'method' => 'manageFields',
         'httpMethod' => 'GET'
     ],
