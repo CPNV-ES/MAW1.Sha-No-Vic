@@ -8,7 +8,7 @@ class Renderer
     private $header;
     private $footer;
 
-    public function __construct($head = __DIR__ . '/../views/gabarits/head.php', $header = __DIR__ .  '/../views/gabarits/header.php', $footer =  __DIR__ . '/../views/gabarits/footer.php')
+    public function __construct($head = __DIR__ . '/../views/gabarits/head.php', $header = __DIR__ .  '/../views/gabarits/shortHeader.php', $footer =  __DIR__ . '/../views/gabarits/footer.php')
     {
         $this->head = $head;
         $this->header = $header;
