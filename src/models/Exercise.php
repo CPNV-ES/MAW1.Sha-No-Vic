@@ -23,16 +23,6 @@ class Exercise extends Model
     protected $creation_date;
     protected $modification_date;
 
-    /**
-     * Constructor of the exercice
-     * @param $id , @param $creation_date, @param $modification_date, @param $title, @param $status
-     * @return void, create a new exercise
-     */
-    public function __construct($title = "")
-    {
-        $this->title = $title;
-    }
-
 
     /**
      * Method to get all exercises from database
