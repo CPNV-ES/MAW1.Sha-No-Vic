@@ -10,7 +10,9 @@
 
 namespace App\models;
 
-class Question
+use PDO;
+
+class Question extends Model
 {
     protected $label;
     protected $value_kind;
