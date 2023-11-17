@@ -9,10 +9,13 @@
  */
 
 namespace App\models;
+
+use Exception;
+use PDO;
+
 class Exercise extends Model
 {
-
-    protected static $table = 'exercises';
+    public static $table = 'exercises';
     protected $id;
     protected $title;
     protected $status;
@@ -25,18 +28,25 @@ class Exercise extends Model
      * @param $id , @param $creation_date, @param $modification_date, @param $title, @param $status
      * @return void, create a new exercise
      */
-    public function __construct($id, $title, $status, $creation_date, $modification_date)
+    public function __construct($title = "")
     {
-        parent::__construct();
-        $this->id = $id;
         $this->title = $title;
-        $this->status = $status;
-        $this->creation_date = $creation_date;
-        $this->modification_date = $modification_date;
-
     }
 
-// getAll() coming from Model.php
+
+    /**
+     * Method to get all exercises from database
+     * @return array of exercises
+     * @throws Exception
+     */
+    public static function getAll($status)
+    {
+        $query = "SELECT * FROM " . self::$table . " WHERE status = " . $status;
+        $stmt = self::getConnection()->prepare($query);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_CLASS, self::class);
+    }
+
     public function getId()
     {
         return $this->id;
@@ -61,50 +71,51 @@ class Exercise extends Model
     {
         return $this->modification_date;
     }
+}
 
-    /**
-     * Save exercises to Database
-     * Return the last inserted id in the DB if new, return the id modified if it was already existing
-     */
-    function save()
-    {
-        $pdo = self::$pdo;
-        $query = 'SELECT * FROM exercises WHERE id = ?';
+/**
+ * Save exercises to Database
+ * Return the last inserted id in the DB if new, return the id modified if it was already existing
+ */
+function save()
+{/*
+    $pdo = self::$pdo;
+    $query = 'SELECT * FROM exercises WHERE id = ?';
+    $stmt = $pdo->prepare($query);
+    $stmt->execute([$this->id]);
+
+    if ($stmt->fetch() == null) {
+        $query = 'INSERT INTO exercises (id, title, creation_date, modification_date, status) VALUES (?, ?, ?, ?, ?)';
         $stmt = $pdo->prepare($query);
-        $stmt->execute([$this->id]);
+        $stmt->execute([$this->id, $this->title, date("Y-m-d H:i:s"), date("Y-m-d H:i:s"), $this->status]);
 
-        if ($stmt->fetch() == null) {
-            $query = 'INSERT INTO exercises (id, title, creation_date, modification_date, status) VALUES (?, ?, ?, ?, ?)';
-            $stmt = $pdo->prepare($query);
-            $stmt->execute([$this->id, $this->title, date("Y-m-d H:i:s"), date("Y-m-d H:i:s"), $this->status]);
+        return $pdo->lastInsertId();
+    } else {
+        $query = 'UPDATE exercises SET title=?, creation_date=?, modification_date=?, status=? WHERE id=?';
+        $stmt = $pdo->prepare($query);
+        $stmt->execute([$this->title, $this->creation_date, date("Y-m-d H:i:s"), $this->status, $this->id]);
 
-            return $pdo->lastInsertId();
-        } else {
-            $query = 'UPDATE exercises SET title=?, creation_date=?, modification_date=?, status=? WHERE id=?';
-            $stmt = $pdo->prepare($query);
-            $stmt->execute([$this->title, $this->creation_date, date("Y-m-d H:i:s"), $this->status, $this->id]);
-
-            return $this->id;
-        }
-    }// TODO: test the save function
+        return $this->id;
+    }*/
+}// TODO: test the save function
 
 
-    function beReady()
-    {
-        //TODO: create a function who change the status of the exercise from building to answering
-        // cannot go backwards in status
-    }
+function beReady()
+{
+    //TODO: create a function who change the status of the exercise from building to answering
+    // cannot go backwards in status
+}
 
-    function close()
-    {
-        //TODO: create a function who change the status of the exercise from answering to closed
-        // cannot go backwards in status
-        // once the exercises is closed the "user" can't answer anymore
-    }
+function close()
+{
+    //TODO: create a function who change the status of the exercise from answering to closed
+    // cannot go backwards in status
+    // once the exercises is closed the "user" can't answer anymore
+}
 
-    function delete()
-    {
-        // TODO: create function who delete the exercise, question and answers accordingly
+function delete()
+{
+    // TODO: create function who delete the exercise, question and answers accordingly
 
-    }
+
 }
