@@ -14,7 +14,7 @@ class ExercisesController
         $status = "'answering'";
         $data['exercises'] = Exercise::getAll($status);
         $renderer = new Renderer();
-        $view = '../views/exercises/answering.view.php';
+        $view = '../views/exercises/answering.php';
         $renderer->renderView($renderer->createView($view, $data));
     }
 
