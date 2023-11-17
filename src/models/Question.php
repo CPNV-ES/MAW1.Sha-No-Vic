@@ -53,9 +53,17 @@ class Question extends Model
         //TODO: create function who return a question depending of the id
     }
 
-    public function GetAllQuestions($exercise_id)
+    /**
+     * Get all questions from an exercise
+     * @param int $exercise_id
+     * @return array of questions
+     */
+    public function GetAllQuestions($exercise_id): array
     {
-        //TODO: create function who return all questions from an exercise
+        $query = "SELECT * FROM " . self::$table . " WHERE exercises_id = " . $exercise_id;
+        $stmt = self::getConnection()->prepare($query);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_CLASS, self::class);
     }
 
     public function save($exercise_id)
