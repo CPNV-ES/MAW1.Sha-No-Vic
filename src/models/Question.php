@@ -14,11 +14,12 @@ use PDO;
 
 class Question extends Model
 {
+    public static $table = 'questions';
     protected $label;
     protected $value_kind;
     protected $exercise_id;
 
-    public function __construct($label, $value_kind, $exercise_id)
+    public function __construct($exercise_id, $label, $value_kind)
     {
         $this->exercise_id = $exercise_id;
         $this->label = $label;
