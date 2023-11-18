@@ -6,10 +6,10 @@ return [
         'method' => 'index',
         'httpMethod' => 'GET'
     ],
-    'answerExercise' => [ //http://exercice-looper.mycpnv.ch/ button : take an exercise
+    'getAllExercise' => [ //http://exercice-looper.mycpnv.ch/ button : take an exercise
         'path' => '/exercises/answering',
         'controller' => 'ExercisesController',
-        'method' => 'takeExercises',
+        'method' => 'getAllExercises',
         'httpMethod' => 'GET'
     ],
     'exercises' => [ //http://exercice-looper.mycpnv.ch/ button : Manage an exercise
