@@ -3,7 +3,7 @@
 namespace App\controllers;
 
 use App\models\Exercise;
-use App\models\Model;
+use App\models\Question;
 use App\Services\Renderer;
 
 class ExercisesController
