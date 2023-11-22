@@ -23,7 +23,7 @@ USE `exercise_looper` ;
 CREATE TABLE IF NOT EXISTS `exercise_looper`.`exercises` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `title` TINYTEXT NOT NULL,
-  `state` ENUM('building', 'answering', 'closed') NOT NULL,
+  `status` ENUM('building', 'answering', 'closed') NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE)
 ENGINE = InnoDB;
