@@ -47,6 +47,14 @@ class Exercise extends Model
         return $this->title;
     }
 
+    public static function getTitleById($exercise_id)
+    {
+        $query = "SELECT title FROM " . self::$table . " WHERE id = " . $exercise_id;
+        $stmt = self::getConnection()->prepare($query);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC)->toString();
+    }
+
     public function getStatus()
     {
         return $this->status;

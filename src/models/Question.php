@@ -58,7 +58,7 @@ class Question extends Model
      * @param int $exercise_id
      * @return array of questions
      */
-    public function GetAllQuestions($exercise_id): array
+    public static function GetQuestionByExercise($exercise_id): array
     {
         $query = "SELECT * FROM " . self::$table . " WHERE exercises_id = " . $exercise_id;
         $stmt = self::getConnection()->prepare($query);
