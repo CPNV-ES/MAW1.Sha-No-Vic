@@ -2,12 +2,15 @@
 
 namespace App\Services;
 
+use Error;
+
 class Renderer
 {
     private $head;
     private $header;
     private $footer;
 
+    //TODO: Modifier le passage des parametres pour que le header puisse être a null
     public function __construct($head = __DIR__ . '/../views/gabarits/head.php', $header = __DIR__ . '/../views/gabarits/shortHeader.php', $footer = __DIR__ . '/../views/gabarits/footer.php')
     {
         $this->head = $head;
@@ -25,10 +28,10 @@ class Renderer
     {
         //TODO : move the concatenation of the path in a function or other
         $view = __DIR__ . '/' . $view;
-        $head = $this->insertDataInView($this->head, $data);
-        $content = $this->insertDataInView($view, $data);
-        $header = $this->insertDataInView($this->header, $data);
-        $footer = $this->insertDataInView($this->footer, $data);
+        $head = Renderer::insertDataInView($this->head, $data);
+        $content = Renderer::insertDataInView($view, $data);
+        $header = Renderer::insertDataInView($this->header, $data);
+        $footer = Renderer::insertDataInView($this->footer, $data);
         return $head . $header . $content . $footer;
     }
 
@@ -38,7 +41,7 @@ class Renderer
      * @param array $data
      * @return string
      */
-    private function insertDataInView($view, $data)
+    private static function insertDataInView($view, $data)
     {
         ob_start();
         include($view);
@@ -56,9 +59,13 @@ class Renderer
     {
         echo $view;
     }
-    public static function displayError()
+    //TODO : refactor displayError
+    public static function displayError($error = null)
     {
-        echo __DIR__ . '/../views/site/404.html.php';
-
+        if ($_ENV['APP_DEBUG'] == 'true') {
+            echo (Renderer::insertDataInView(__DIR__ . '/../views/site/404.html.php', [$error]));
+        } else {
+            echo (Renderer::insertDataInView(__DIR__ . '/../views/site/404.html.php', []));
+        }
     }
 }
