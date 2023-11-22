@@ -4,7 +4,8 @@
         <li class="row">
             <div class="column card">
                 <div class="title"><?= $exercise->getTitle(); ?></div>
-                <a class="button" href="exercises/<?= $exercise->getId()?>/fulfillments/new">Take it</a>
+                <?= var_dump($exercise->getId()); ?>
+                <a class="button" href="/exercises/<?= $exercise->getId()?>/fulfillments/new">Take it</a>
             </div>
         </li>
     <?php
