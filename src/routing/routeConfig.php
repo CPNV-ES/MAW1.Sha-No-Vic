@@ -9,7 +9,7 @@ return [
     'takeAnExercise' => [ //http://exercice-looper.mycpnv.ch/ button : take an exercise
         'path' => '/exercises/answering',
         'controller' => 'ExercisesController',
-        'method' => 'getAllExercises',
+        'method' => 'takeExercises',
         'httpMethod' => 'GET'
 
     ],
