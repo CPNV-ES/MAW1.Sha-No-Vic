@@ -4,6 +4,7 @@ namespace App\Routing;
 
 use App\Routing\Route;
 use App\Services;
+use App\Services\Renderer;
 use App\Services\RouteParameterHandler;
 
 class Router
@@ -40,6 +41,7 @@ class Router
             }
         }
     }
+    //TODO: refactor error handler
     public function redirect(Route $route, $params = [])
     {
         $controllerName = $route->getController();
@@ -52,12 +54,10 @@ class Router
             if (method_exists($controller, $method)) {
                 $controller->$method($params);
             } else {
-                // Handle method not found error
-                echo "Method not found in controller: $method";
+                Renderer::displayError("The method $method does not exist in the controller $controllerName");
             }
         } else {
-            // Handle controller not found error
-            echo "Controller not found: $controllerName";
+            Renderer::displayError("The controller $controllerName does not exist");
         }
     }
 }
