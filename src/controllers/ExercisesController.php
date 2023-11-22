@@ -18,4 +18,11 @@ class ExercisesController
         $renderer->renderView($renderer->createView($view, $data));
     }
 
+    public function takeOneExercise($exercise_id): void {
+        $data['title'] = Exercise::getTitleById($exercise_id);
+        $data['questions'] = Question::GetQuestionByExercise($exercise_id);
+        $renderer = new Renderer();
+        $view = '../views/fulfillments/fulfillmentsNew.php';
+        $renderer->renderView($renderer->createView($view, $data));
+    }
 }
