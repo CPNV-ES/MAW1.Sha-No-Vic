@@ -18,9 +18,9 @@ CREATE SCHEMA IF NOT EXISTS `exercise_looper` DEFAULT CHARACTER SET utf8 ;
 USE `exercise_looper` ;
 
 -- -----------------------------------------------------
--- Table `exercise_looper`.`excercises`
+-- Table `exercise_looper`.`exercises`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `exercise_looper`.`excercises` (
+CREATE TABLE IF NOT EXISTS `exercise_looper`.`exercises` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `title` TINYTEXT NOT NULL,
   `state` ENUM('building', 'answering', 'closed') NOT NULL,
@@ -34,15 +34,15 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `exercise_looper`.`questions` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `excercises_id` INT NOT NULL,
+  `exercises_id` INT NOT NULL,
   `title` VARCHAR(45) NOT NULL,
   `type` ENUM('single_line', 'single_line_list', 'multi_line') NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
-  INDEX `fk_questions_excercises1_idx` (`excercises_id` ASC) VISIBLE,
-  CONSTRAINT `fk_questions_excercises1`
-    FOREIGN KEY (`excercises_id`)
-    REFERENCES `exercise_looper`.`excercises` (`id`)
+  INDEX `fk_questions_exercises1_idx` (`exercises_id` ASC) VISIBLE,
+  CONSTRAINT `fk_questions_exercises1`
+    FOREIGN KEY (`exercises_id`)
+    REFERENCES `exercise_looper`.`exercises` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -54,13 +54,13 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `exercise_looper`.`fulfillments` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `timestamp` TINYTEXT NULL,
-  `excercises_id` INT NOT NULL,
+  `exercises_id` INT NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
-  INDEX `fk_fulfillments_excercises_idx` (`excercises_id` ASC) VISIBLE,
-  CONSTRAINT `fk_fulfillments_excercises`
-    FOREIGN KEY (`excercises_id`)
-    REFERENCES `exercise_looper`.`excercises` (`id`)
+  INDEX `fk_fulfillments_exercises_idx` (`exercises_id` ASC) VISIBLE,
+  CONSTRAINT `fk_fulfillments_exercises`
+    FOREIGN KEY (`exercises_id`)
+    REFERENCES `exercise_looper`.`exercises` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
