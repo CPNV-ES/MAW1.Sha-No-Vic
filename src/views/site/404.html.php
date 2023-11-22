@@ -27,7 +27,7 @@
 
         .number::before {
             background-color: #673ab7;
-            background-image: radial-gradient(closest-side at 50% 50%, #ffc107 100%, rgba(0, 0, 0, 0)), radial-gradient(closest-side at 50% 50%, #e91e63 100%, rgba(0, 0, 0, 0));
+            background-image: radial-gradient(closest-side at 50% 50%, rgba(224, 164, 88, 1) 100%, rgba(0, 0, 0, 0)), radial-gradient(closest-side at 50% 50%, rgba(65, 157, 120, 1) 100%, rgba(0, 0, 0, 0));
             background-repeat: repeat-x;
             background-size: 40vmin 40vmin;
             background-position: -100vmin 20vmin, 100vmin -25vmin;
@@ -54,7 +54,7 @@
         }
 
         .text {
-            font: 400 5vmin "Courgette";
+            font: 400 5vmin "Roboto";
         }
 
         .text span {
@@ -67,8 +67,11 @@
     <!-- This file lives in public/404.html -->
 
     <div class="number">404</div>
-    <div class="text"><span>Ooops...</span><br>page not found</div>
-    <a class="me" href="https://codepen.io/uzcho_/pens/popular/?grid_type=list" target="_blank"></a>
-</body>
+    <div class="text"><span>Ooops...</span><br>page not found<br>
+        <?php if ($data != null)
+            echo ($data[0]) ?>
+        </div>
+        <a class="me" href="https://codepen.io/uzcho_/pens/popular/?grid_type=list" target="_blank"></a>
+    </body>
 
-</html>
+    </html>
