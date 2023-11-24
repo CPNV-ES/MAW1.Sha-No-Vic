@@ -8,8 +8,8 @@ VALUES (1, 'Question 1', 'single_line'),
        (1, 'Question 3', 'multi_line');
 
 -- Insert Fulfillment for Exercise 1
-INSERT INTO `exercise_looper`.`fulfillments` (`timestamp`, `exercises_id`)
-VALUES ('2023-11-17 12:00:00', 1);
+INSERT INTO `exercise_looper`.`fulfillments` (`exercises_id`)
+VALUES (1);
 
 -- Insert Answers for Exercise 1
 INSERT INTO `exercise_looper`.`answers` (`questions_id`, `fulfillments_id`, `answer`)
@@ -27,8 +27,8 @@ VALUES (2, 'Question 4', 'single_line'),
        (2, 'Question 6', 'multi_line');
 
 -- Insert Fulfillment for Exercise 2
-INSERT INTO `exercise_looper`.`fulfillments` (`timestamp`, `exercises_id`)
-VALUES ('2023-11-17 13:00:00', 2);
+INSERT INTO `exercise_looper`.`fulfillments` (`exercises_id`)
+VALUES (2);
 
 -- Insert Answers for Exercise 2
 INSERT INTO `exercise_looper`.`answers` (`questions_id`, `fulfillments_id`, `answer`)
@@ -46,8 +46,8 @@ VALUES (3, 'Question 7', 'single_line'),
        (3, 'Question 9', 'multi_line');
 
 -- Insert Fulfillment for Exercise 3
-INSERT INTO `exercise_looper`.`fulfillments` (`timestamp`, `exercises_id`)
-VALUES ('2023-11-17 14:00:00', 3);
+INSERT INTO `exercise_looper`.`fulfillments` (`exercises_id`)
+VALUES (3);
 
 -- Insert Answers for Exercise 3
 INSERT INTO `exercise_looper`.`answers` (`questions_id`, `fulfillments_id`, `answer`)
