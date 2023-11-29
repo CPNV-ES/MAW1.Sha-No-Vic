@@ -8,7 +8,7 @@ use App\Services\Renderer;
 
 class ExercisesController
 {
-    public function takeExercises(): void
+    public function takeExercises(): array
     {
         $data['title'] = 'Take an exercise';
         $status = "'answering'";
@@ -16,6 +16,7 @@ class ExercisesController
         $renderer = new Renderer();
         $view = '../views/exercises/answering.php';
         $renderer->renderView($renderer->createView($view, $data));
+        return $data;
     }
 
     public function takeOneExercise($exercise_id): void {
