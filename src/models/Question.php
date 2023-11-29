@@ -32,14 +32,9 @@ class Question extends Model
         $this->label = $newLabel;
     }
 
-    public function getValueKind()
+    public function getType()
     {
-        return $this->value_kind;
-    }
-
-    function setValueKind($newValueKind)
-    {
-        $this->value_kind = $newValueKind;
+        return $this->type;
     }
 
     public function getAQuestion($id)
@@ -54,7 +49,7 @@ class Question extends Model
      */
     public static function GetQuestionByExercise($exercise_id): array
     {
-        $query = "SELECT * FROM " . self::$table . " WHERE exercises_id = " . $exercise_id;
+        $query = "SELECT id, title, type FROM " . self::$table . " WHERE exercises_id = " . $exercise_id;
         $stmt = self::getConnection()->prepare($query);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_CLASS, self::class);
