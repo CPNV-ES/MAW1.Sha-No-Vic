@@ -15,21 +15,19 @@ use PDO;
 class Question extends Model
 {
     public static $table = 'questions';
-    protected $label;
-    protected $value_kind;
-    protected $exercise_id;
+    protected $id;
+    protected $type;
+    protected $title;
 
 
     // All getter and setter
-
-    public function getLabel()
+    public function getId()
     {
-        return $this->label;
+        return $this->id;
     }
-
-    function setLabel($newLabel)
+    public function getTitle()
     {
-        $this->label = $newLabel;
+        return $this->title;
     }
 
     public function getType()
