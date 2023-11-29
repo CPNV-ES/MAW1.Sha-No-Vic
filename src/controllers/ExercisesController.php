@@ -19,9 +19,9 @@ class ExercisesController
         return $data;
     }
 
-    public function takeOneExercise($exercise_id): void {
-        $data['title'] = Exercise::getTitleById($exercise_id);
-        $data['questions'] = Question::GetQuestionByExercise($exercise_id);
+    public function takeOneExercise($params): void {
+        $data['title'] = Exercise::getTitleById($params["id"][0]);
+        $data['questions'] = Question::GetQuestionByExercise($params["id"][0]);
         $renderer = new Renderer();
         $view = '../views/fulfillments/fulfillmentsNew.php';
         $renderer->renderView($renderer->createView($view, $data));
