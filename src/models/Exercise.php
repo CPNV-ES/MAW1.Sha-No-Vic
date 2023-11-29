@@ -52,7 +52,7 @@ class Exercise extends Model
         $query = "SELECT title FROM " . self::$table . " WHERE id = " . $exercise_id;
         $stmt = self::getConnection()->prepare($query);
         $stmt->execute();
-        return $stmt->fetch(PDO::FETCH_ASSOC)->toString();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
     public function getStatus()
