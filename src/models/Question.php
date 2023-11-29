@@ -19,12 +19,6 @@ class Question extends Model
     protected $value_kind;
     protected $exercise_id;
 
-    public function __construct($exercise_id, $label, $value_kind)
-    {
-        $this->exercise_id = $exercise_id;
-        $this->label = $label;
-        $this->value_kind = $value_kind;
-    }
 
     // All getter and setter
 
