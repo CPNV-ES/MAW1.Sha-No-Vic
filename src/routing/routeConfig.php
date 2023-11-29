@@ -14,9 +14,9 @@ return [
 
     ],
     'takeOneExercise' => [ //http://exercice-looper.mycpnv.ch/ button : take an exercise
-        'path' => '/exercises/:idExercise/fulfillments/new',
+        'path' => '/exercises/:id/fulfillments/new',
         'controller' => 'ExercisesController',
-        'method' => 'takeOneExercises',
+        'method' => 'takeOneExercise',
         'httpMethod' => 'GET'
     ],
     'exercises' => [ //http://exercice-looper.mycpnv.ch/ button : Manage an exercise
