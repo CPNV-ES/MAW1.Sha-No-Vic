@@ -31,7 +31,6 @@ class ExercisesController
         $data['title'] = 'New exercise';
         $renderer = new Renderer();
         $view = '../views/exercises/new.php';
-        dd($data);
         $renderer->renderView($renderer->createView($view, $data));
     }
 }
