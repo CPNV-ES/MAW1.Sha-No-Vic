@@ -18,4 +18,11 @@ class Fulfillment extends Model
     protected $timestamp;
     protected $exercise_id;
 
+    public static function getAll($exercise_id)
+    {
+        $query = "SELECT * FROM " . self::$table . " WHERE exercise_id = " . $exercise_id;
+        $stmt = self::getConnection()->prepare($query);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_CLASS, self::class);
+    }
 }
