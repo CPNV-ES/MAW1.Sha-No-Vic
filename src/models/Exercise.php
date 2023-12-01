@@ -69,35 +69,18 @@ class Exercise extends Model
     {
         return $this->modification_date;
     }
+    /**
+     * Save exercises to Database
+     * Return the last inserted id in the DB if new, return the id modified if it was already existing
+     */
+    public static function save($title, $status)
+    {
+        $query = "INSERT INTO " . self::$table . " (title, status) VALUES ('" . $title . "', '" . $status . "')";
+        $stmt = self::getConnection()->prepare($query);
+        $stmt->execute();
+        return self::getConnection()->lastInsertId();
+    }
 }
-
-/**
- * Save exercises to Database
- * Return the last inserted id in the DB if new, return the id modified if it was already existing
- */
-function save()
-{/*
-    $pdo = self::$pdo;
-    $query = 'SELECT * FROM exercises WHERE id = ?';
-    $stmt = $pdo->prepare($query);
-    $stmt->execute([$this->id]);
-
-    if ($stmt->fetch() == null) {
-        $query = 'INSERT INTO exercises (id, title, creation_date, modification_date, status) VALUES (?, ?, ?, ?, ?)';
-        $stmt = $pdo->prepare($query);
-        $stmt->execute([$this->id, $this->title, date("Y-m-d H:i:s"), date("Y-m-d H:i:s"), $this->status]);
-
-        return $pdo->lastInsertId();
-    } else {
-        $query = 'UPDATE exercises SET title=?, creation_date=?, modification_date=?, status=? WHERE id=?';
-        $stmt = $pdo->prepare($query);
-        $stmt->execute([$this->title, $this->creation_date, date("Y-m-d H:i:s"), $this->status, $this->id]);
-
-        return $this->id;
-    }*/
-}// TODO: test the save function
-
-
 function beReady()
 {
     //TODO: create a function who change the status of the exercise from building to answering
