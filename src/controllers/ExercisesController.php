@@ -44,7 +44,7 @@ class ExercisesController
     public function manageFields($params): void
     {
         $data['title'] = 'Manage fields';
-        $data['exercise_id'] = $params[0];
+        $data['exercise_id'] = $params['id'][0];
         $renderer = new Renderer();
         $view = '../views/exercises/Fields.php';
         $renderer->renderView($renderer->createView($view, $data));
