@@ -15,4 +15,13 @@ class QuestionsController
         $view = '../views/questions/new.php';
         $renderer->renderView($renderer->createView($view, $data));
     }
+
+    public function manageQuestions($params): void
+    {
+        $data['title'] = 'Manage fields';
+        $data['exercise_id'] = $params['id'][0];
+        $renderer = new Renderer();
+        $view = '../views/exercises/Fields.php';
+        $renderer->renderView($renderer->createView($view, $data));
+    }
 }
