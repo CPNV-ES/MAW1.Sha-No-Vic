@@ -12,7 +12,7 @@ class ExercisesController
     {
         $data['title'] = 'Take an exercise';
         $status = "'answering'";
-        $data['exercises'] = Exercise::getAll($status);
+        $data['exercises'] = Exercise::getByStatus($status);
         $renderer = new Renderer();
         $view = '../views/exercises/answering.php';
         $renderer->renderView($renderer->createView($view, $data));
@@ -25,5 +25,17 @@ class ExercisesController
         $renderer = new Renderer();
         $view = '../views/fulfillments/fulfillmentsNew.php';
         $renderer->renderView($renderer->createView($view, $data));
+    }
+
+    public function manageExercises(): array
+    {
+        $data['title'] = 'Manage exercises';
+        $status = "'answering'";
+        $data['exercises'] = Exercise::getAll();
+
+        $renderer = new Renderer();
+        $view = '../views/exercises/exercises.php';
+        $renderer->renderView($renderer->createView($view, $data));
+        return $data;
     }
 }

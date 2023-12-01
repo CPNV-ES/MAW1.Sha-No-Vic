@@ -29,13 +29,22 @@ class Exercise extends Model
      * @return array of exercises
      * @throws Exception
      */
-    public static function getAll($status): array
+    public static function getByStatus($status): array
     {
         $query = "SELECT * FROM " . self::$table . " WHERE status = " . $status;
         $stmt = self::getConnection()->prepare($query);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_CLASS, self::class);
     }
+
+    public static function getAll(): array
+    {
+        $query = "SELECT * FROM " . self::$table;
+        $stmt = self::getConnection()->prepare($query);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_CLASS, self::class);
+    }
+
 
     public function getId()
     {

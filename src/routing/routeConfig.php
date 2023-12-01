@@ -34,7 +34,7 @@ return [
     'exercises' => [ //http://exercice-looper.mycpnv.ch/ button : Manage an exercise
         'path' => '/exercises',
         'controller' => 'ExercisesController',
-        'method' => 'index',
+        'method' => 'manageExercises',
         'httpMethod' => 'GET'
     ],
 
