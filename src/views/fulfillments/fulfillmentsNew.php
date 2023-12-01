@@ -16,7 +16,7 @@
         <?php elseif ($question->getType() == 'single_line_list' || $question->getType() == 'multi_line') : ?>
         <input type="hidden" value="<?= $question->getId(); ?>" name="fulfillment[answers_attributes][][field_id]" id="fulfillment_answers_attributes__field_id">
         <div class="field">
-            <label for="fulfillment_answers_attributes__value">MultiLine</label>
+            <label for="fulfillment_answers_attributes__value"><?= $question->getTitle(); ?></label>
             <textarea name="fulfillment[answers_attributes][][value]" id="fulfillment_answers_attributes__value"></textarea>
         </div>
 
