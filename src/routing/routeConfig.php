@@ -39,7 +39,7 @@ return [
     ],
 
     'manageFields' => [ //http://exercice-looper.mycpnv.ch/exercises button : Manage fields
-        'path' => '/exercises/:idExercise/fields',
+        'path' => '/exercises/:id/fields',
         'controller' => 'ExercisesController',
         'method' => 'manageFields',
         'httpMethod' => 'GET'
@@ -51,13 +51,13 @@ return [
         'httpMethod' => 'DELETE'
     ],
     'publishExercise' => [ //http://exercice-looper.mycpnv.ch/exercises button : be ready for answers http://exercice-looper.mycpnv.ch/exercises/:idExercise/fields button : complete and be ready for answers
-        'path' => '/exercises',
+        'path' => '/exercises/:id',
         'controller' => 'exercisesController',
         'method' => 'publishExercise',
         'httpMethod' => 'PUT'
     ],
     'closeExercise' => [ //http://exercice-looper.mycpnv.ch/exercises button : be ready for answers http://exercice-looper.mycpnv.ch/exercises/:idExercise/fields button : complete and be ready for answers
-        'path' => '/exercises',
+        'path' => '/exercises/:id',
         'controller' => 'exercisesController',
         'method' => 'publishExercise',
         'httpMethod' => 'PUT'
@@ -69,7 +69,7 @@ return [
         'httpMethod' => 'GET'
     ],
     'createExercise' => [ //http://exercice-looper.mycpnv.ch/exercises/new button : create exercise
-        'path' => '/exercises/:idExercise/fields',
+        'path' => '/exercises',
         'controller' => 'exercisesController',
         'method' => 'createExercise',
         'httpMethod' => 'POST'
