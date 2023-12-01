@@ -53,9 +53,12 @@ class Question extends Model
         return $stmt->fetchAll(PDO::FETCH_CLASS, self::class);
     }
 
-    public function save($exercise_id)
+    public static function save($title, $type, $exercise_id)
     {
-        //TODO: create function who save the question in the database
+        $query = "INSERT INTO " . self::$table . " (title, type, exercises_id) VALUES (:title, :type, :exercise_id)";
+        $stmt = self::getConnection()->prepare($query);
+        $stmt->execute(['title' => $title, 'type' => $type, 'exercise_id' => $exercise_id]);
+        return self::getConnection()->lastInsertId();
     }
 
     public function delete($id)
