@@ -40,8 +40,8 @@ return [
 
     'manageFields' => [ //http://exercice-looper.mycpnv.ch/exercises button : Manage fields
         'path' => '/exercises/:id/fields',
-        'controller' => 'ExercisesController',
-        'method' => 'manageFields',
+        'controller' => 'QuestionsController',
+        'method' => 'manageQuestions',
         'httpMethod' => 'GET'
     ],
     'destroyExercise' => [ //http://exercice-looper.mycpnv.ch/exercises http://exercice-looper.mycpnv.ch/exercises/:idExercise/fields button : Destroy 
@@ -74,10 +74,10 @@ return [
         'method' => 'createExercise',
         'httpMethod' => 'POST'
     ],
-    'createField' => [ //http://exercice-looper.mycpnv.ch/exercises/:idExercise/fields button : create field
-        'path' => '/exercises/:idExercise/fields',
-        'controller' => 'exercisesController',
-        'method' => 'createField',
+    'createQuestion' => [ //http://exercice-looper.mycpnv.ch/exercises/:idExercise/fields button : create field
+        'path' => '/exercises/:id/fields',
+        'controller' => 'QuestionsController',
+        'method' => 'createQuestion',
         'httpMethod' => 'POST'
     ],
     'editField' => [ //http://exercice-looper.mycpnv.ch/exercises/:idExercise/fields button : edit field
