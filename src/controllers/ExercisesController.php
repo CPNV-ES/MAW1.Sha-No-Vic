@@ -33,4 +33,9 @@ class ExercisesController
         $view = '../views/exercises/new.php';
         $renderer->renderView($renderer->createView($view, $data));
     }
+    public function createExercise(): void
+    {
+        $exercise = Exercise::save($_POST['title'], 'building');
+        header('Location: /exercises/' . $exercise . '/fields');
+    }
 }
