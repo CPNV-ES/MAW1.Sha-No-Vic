@@ -16,6 +16,12 @@ class QuestionsController
         $renderer->renderView($renderer->createView($view, $data));
     }
 
+    public function createQuestion($params): void
+    {
+        $question = Question::save($_POST['label'], $_POST['value_kind'], $params['id'][0]);
+        header('Location: /exercises/' . $params['id'][0] . '/fields');
+    }
+
     public function manageQuestions($params): void
     {
         $data['title'] = 'Manage fields';
