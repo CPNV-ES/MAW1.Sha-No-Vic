@@ -20,9 +20,9 @@ return [
         'httpMethod' => 'GET'
     ],
     'saveExerciseFullfilment' => [ //http://exercice-looper.mycpnv.ch/exercises/29/fulfillments/new button : save
-        'path' => '/exercises/:idExercise/fulfillments',
-        'controller' => 'ExercisesController',
-        'method' => 'SaveExerciseFullfilment',
+        'path' => '/exercises/:id/fulfillments',
+        'controller' => 'FulfillmentsController',
+        'method' => 'save',
         'httpMethod' => 'POST'
     ],
     'editExerciseFullfilment' => [ //http://exercice-looper.mycpnv.ch/exercises/29/fulfillments/new button : save
