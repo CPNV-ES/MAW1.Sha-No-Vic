@@ -60,7 +60,19 @@ class Question extends Model
         $stmt->execute(['title' => $title, 'type' => $type, 'exercise_id' => $exercise_id]);
         return self::getConnection()->lastInsertId();
     }
-
+    public static function GetQuestionById($id)
+    {
+        $query = "SELECT id, title, type FROM " . self::$table . " WHERE id = " . $id;
+        $stmt = self::getConnection()->prepare($query);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_CLASS, self::class);
+    }
+    public static function updateQuestion($id, $title, $type)
+    {
+        $query = "UPDATE " . self::$table . " SET title = :title, type = :type WHERE id = :id";
+        $stmt = self::getConnection()->prepare($query);
+        $stmt->execute(['title' => $title, 'type' => $type, 'id' => $id]);
+    }
     public function delete($id)
     {
         //TODO: create function who delete the question in the database
