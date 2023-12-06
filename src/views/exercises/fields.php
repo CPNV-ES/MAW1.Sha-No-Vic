@@ -10,16 +10,19 @@
                 </tr>
             </thead>
             <tbody>
+                <?php //dd($data['questions']) ?>
                 <?php foreach ($data['questions'] as $question): ?>
                     <tr>
                         <td>
-                            <?= $question['title'] ?>
+                            <?= $question->getTitle(); ?>
                         </td>
                         <td>
-                            <?= $question['type'] ?>
+                            <?= $question->getType(); ?>
                         </td>
                         <td>
-                            <a title="Edit" href="fields/218/edit.html"><i class="fa fa-edit"></i></a>
+                            <a title="Edit"
+                                href="/exercises/<?= $data['exercise_id'] ?>/fields/<?= $question->getId(); ?>"><i
+                                    class="fa fa-edit"></i></a>
                             <a data-confirm="Are you sure?" title="Destroy" rel="nofollow" data-method="delete"
                                 href="fields/218.html"><i class="fa fa-trash"></i></a>
                         </td>
