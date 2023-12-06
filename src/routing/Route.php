@@ -42,7 +42,21 @@ class Route
         //TODO: ajouter un match sur plusieur methode http par route en mettant la posibilité de mettre une methdoe en post et get par exemple
         $path = $this->routeTemplateFromURL($path);
 
-        if ($this->path == $path && $this->httpMethod == $_SERVER['REQUEST_METHOD']) {
+        if ($this->path == $path && $this->matchHttpMethod()) {
+            return true;
+        }
+        return false;
+    }
+    //TODO: refactor this function
+    public function matchHttpMethod()
+    {
+        if (isset($_POST['_method'])) {
+
+            if ($this->httpMethod == $_SERVER['REQUEST_METHOD'] || $this->httpMethod == $_POST['_method']) {
+                return true;
+            }
+            return false;
+        } else if ($this->httpMethod == $_SERVER['REQUEST_METHOD']) {
             return true;
         }
         return false;
