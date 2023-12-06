@@ -10,6 +10,7 @@ namespace App\models;
 
 use Exception;
 use PDO;
+use Exercise;
 
 class Fulfillment extends Model
 {
