@@ -17,11 +17,11 @@ class Fulfillment extends Model
     public static $table = 'fulfillments';
     protected $id;
     protected $timestamp;
-    protected $exercise_id;
+    protected $exercises_id;
 
-    public static function getAll($exercise_id)
+    public static function getAll($exercises_id)
     {
-        $query = "SELECT * FROM " . self::$table . " WHERE exercise_id = " . $exercise_id;
+        $query = "SELECT * FROM " . self::$table . " WHERE exercises_id = " . $exercises_id;
         $stmt = self::getConnection()->prepare($query);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_CLASS, self::class);
