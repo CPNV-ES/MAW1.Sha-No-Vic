@@ -11,11 +11,19 @@
             <tbody>
             <?php foreach ($data['exercises'] as  $exercise) : if ($exercise->getStatus()) : ?>
             <tr>
-                <td><?= $exercise->getTitle() ?></td>
-                <td>
-                    <a title="Be ready for answers" rel="nofollow" data-method="put" href="exercises/1060cfc.html?exercise%5Bstatus%5D=answering"><i class="fa fa-comment"></i></a>
-                    <a title="Manage fields" href="exercises/<?= $exercise->getId() ?>/fields"><i class="fa fa-edit"></i></a>
-                    <a data-confirm="Are you sure?" title="Destroy" rel="nofollow" data-method="delete" href="exercises/<?= $exercise->getId() ?>"><i class="fa fa-trash"></i></a>
+                <td class="no-css-td" class="text-widen"><?= $exercise->getTitle() ?></td>
+                <td class="no-css-td">
+                    <div class="container widen">
+                        <form id="changeExerciseStatus" method="post" class="icon-form action-icon" action="exercises/<?= $exercise->getId() ?>">
+                            <input type="hidden" name="_method" value="PUT">
+                            <button class="no-css" type="submit"><i class="fa fa-comment purple"></i></button>
+                        </form>
+                        <a title="Manage fields" href="exercises/<?= $exercise->getId() ?>/fields"><i class="fa fa-edit action-icon"></i></a>
+                        <form id="deleteForm" method="post" class="icon-form action-icon" action="exercises/<?= $exercise->getId() ?>">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <button class="no-css" type="submit"><i class="fa fa-trash purple"></i></button>
+                        </form>
+                    </div>
                 </td>
             </tr>
             <?php endif; endforeach; ?>
@@ -36,9 +44,12 @@
             <?php foreach ($data['exercises'] as  $exercise) : if ($exercise->getStatus() == "answering") : ?>
             <tr>
                 <td><?= $exercise->getTitle() ?></td>
-                <td>
+                <td class="no-css-td">
                     <a title="Show results" href="exercises/<?= $exercise->getId() ?>/results"><i class="fa fa-chart-bar"></i></a>
-                    <a title="Close" rel="nofollow" data-method="put" href="exercises/120785c.html?exercise%5Bstatus%5D=closed"><i class="fa fa-minus-circle"></i></a>
+                    <form id="changeExerciseStatus" method="post" class="icon-form action-icon" action="exercises/<?= $exercise->getId() ?>">
+                        <input type="hidden" name="_method" value="PUT">
+                        <button class="no-css" type="submit"><i class="fa fa-minus-circle purple"></i></button>
+                    </form>
                 </td>
             </tr>
             <?php endif; endforeach; ?>
@@ -60,9 +71,12 @@
             <?php foreach ($data['exercises'] as  $exercise) : if ($exercise->getStatus() == "closed") : ?>
             <tr>
                 <td><?= $exercise->getTitle() ?></td>
-                <td>
+                <td class="no-css-td">
                     <a title="Show results" href="exercises/<?= $exercise->getId() ?>/results"><i class="fa fa-chart-bar"></i></a>
-                    <a data-confirm="Are you sure?" title="Destroy" rel="nofollow" data-method="delete" href="exercises/<?= $exercise->getId() ?>"><i class="fa fa-trash"></i></a>
+                    <form id="deleteForm" method="post" class="icon-form action-icon" action="exercises/<?= $exercise->getId() ?>">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button class="no-css" type="submit"><i class="fa fa-trash purple"></i></button>
+                    </form>
                 </td>
             </tr>
             <?php endif; endforeach; ?>
