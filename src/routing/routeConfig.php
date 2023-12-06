@@ -25,10 +25,16 @@ return [
         'method' => 'save',
         'httpMethod' => 'POST'
     ],
-    'editExerciseFullfilment' => [ //http://exercice-looper.mycpnv.ch/exercises/29/fulfillments/new button : save
-        'path' => '/exercises/:idExercise/fulfillments/:id/edit',
-        'controller' => 'ExercisesController',
-        'method' => 'editExerciseFullfilment',
+    'editExerciseFullfilment' => [ //http://exercice-looper.mycpnv.ch/exercises/29/fulfillments/edit button : save
+        'path' => '/exercises/:id/fulfillments/:id/edit',
+        'controller' => 'FulfillmentsController',
+        'method' => 'editExerciseFulfillment',
+        'httpMethod' => 'GET'
+    ],
+    'updateExerciseFullfilment' => [ //http://exercice-looper.mycpnv.ch/exercises/29/fulfillments/edit button : save
+        'path' => '/exercises/:id/fulfillments/:id/edit',
+        'controller' => 'FulfillmentsController',
+        'method' => 'updateExerciseFullfilment',
         'httpMethod' => 'POST'
     ],
     'exercises' => [ //http://exercice-looper.mycpnv.ch/ button : Manage an exercise
