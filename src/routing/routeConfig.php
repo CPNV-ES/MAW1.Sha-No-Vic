@@ -81,9 +81,9 @@ return [
         'httpMethod' => 'POST'
     ],
     'editField' => [ //http://exercice-looper.mycpnv.ch/exercises/:idExercise/fields button : edit field
-        'path' => 'exercises/:idExercise/fields/:idField/edit',
-        'controller' => 'exercisesController',
-        'method' => 'createField',
+        'path' => 'exercises/:idExercise/fields/:idField',
+        'controller' => 'QuestionsController',
+        'method' => 'editQuestion',
         'httpMethod' => 'GET'
     ],
     'updateField' => [ //http://exercice-looper.mycpnv.ch/exercises/:idExercise/fields button : update field
