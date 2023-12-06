@@ -31,4 +31,18 @@ class QuestionsController
         $view = '../views/exercises/Fields.php';
         $renderer->renderView($renderer->createView($view, $data));
     }
+    public function editQuestion($params): void
+    {
+        $data['title'] = 'Edit question';
+        $data['id'] = $params['id'];
+        $data['question'] = Question::GetQuestionById($params['id'][1]);
+        $renderer = new Renderer();
+        $view = '../views/questions/edit.php';
+        $renderer->renderView($renderer->createView($view, $data));
+    }
+    public function updateQuestion($params): void
+    {
+        Question::updateQuestion($params['id'][1], $_POST['label'], $_POST['value_kind']);
+        header('Location: /exercises/' . $params['id'][0] . '/fields');
+    }
 }
