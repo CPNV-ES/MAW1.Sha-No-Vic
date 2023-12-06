@@ -26,6 +26,7 @@ class QuestionsController
     {
         $data['title'] = 'Manage fields';
         $data['exercise_id'] = $params['id'][0];
+        $data['questions'] = Question::GetQuestionByExercise($params['id'][0]);
         $renderer = new Renderer();
         $view = '../views/exercises/Fields.php';
         $renderer->renderView($renderer->createView($view, $data));
