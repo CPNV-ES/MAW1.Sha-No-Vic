@@ -30,12 +30,26 @@ class ExercisesController
     public function manageExercises(): array
     {
         $data['title'] = 'Manage exercises';
-        $status = "'answering'";
         $data['exercises'] = Exercise::getAll();
-
         $renderer = new Renderer();
         $view = '../views/exercises/exercises.php';
         $renderer->renderView($renderer->createView($view, $data));
         return $data;
+    }
+
+    public function destroyExercise($params): void
+    {
+        Exercise::delete($params['id'][0]);
+        header('Location: /exercises');
+    }
+
+    public function changeExerciseStatus($params): void
+    {
+        $exercise = Exercise::getStatusById($params['id'][0]);
+        if ($exercise == 'answering') {
+            Exercise::setStatus($params['id'][0], 'closed');
+        } else {
+            Exercise::setStatus($params['id'][0], 'answering');
+        }
     }
 }

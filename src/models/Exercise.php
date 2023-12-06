@@ -78,6 +78,43 @@ class Exercise extends Model
     {
         return $this->modification_date;
     }
+
+    public static function delete($id)
+    {
+        $query = "DELETE FROM " . self::$table . " WHERE id = " . $id;
+        $stmt = self::getConnection()->prepare($query);
+        $stmt->execute();
+
+    }
+
+    public static function publish($id)
+    {
+        $query = "UPDATE " . self::$table . " SET status = 'answering' WHERE id = " . $id;
+        $stmt = self::getConnection()->prepare($query);
+        $stmt->execute();
+    }
+
+    public static function close($id)
+    {
+        $query = "UPDATE " . self::$table . " SET status = 'closed' WHERE id = " . $id;
+        $stmt = self::getConnection()->prepare($query);
+        $stmt->execute();
+    }
+
+    public static function getStatusById($id)
+    {
+        $query = "SELECT status FROM " . self::$table . " WHERE id = " . $id;
+        $stmt = self::getConnection()->prepare($query);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC)->toString();
+    }
+
+    public static function setStatus($id, $status)
+    {
+        $query = "UPDATE " . self::$table . " SET status = " . $status . " WHERE id = " . $id;
+        $stmt = self::getConnection()->prepare($query);
+        $stmt->execute();
+    }
 }
 
 /**
@@ -120,9 +157,4 @@ function close()
     // once the exercises is closed the "user" can't answer anymore
 }
 
-function delete()
-{
-    // TODO: create function who delete the exercise, question and answers accordingly
 
-
-}
