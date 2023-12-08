@@ -73,13 +73,10 @@ class Question extends Model
         $stmt = self::getConnection()->prepare($query);
         $stmt->execute(['title' => $title, 'type' => $type, 'id' => $id]);
     }
-    public function delete($id)
+    public static function deleteQuestion($id)
     {
-        //TODO: create function who delete the question in the database
-    }
-
-    public function edit($id)
-    {
-        //TODO: create function who edit the question in the database
+        $query = "DELETE FROM " . self::$table . " WHERE id = " . $id;
+        $stmt = self::getConnection()->prepare($query);
+        $stmt->execute();
     }
 }
