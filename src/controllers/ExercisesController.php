@@ -12,7 +12,7 @@ class ExercisesController
     {
         $data['title'] = 'Take an exercise';
         $status = "'answering'";
-        $data['exercises'] = Exercise::getAll($status);
+        $data['exercises'] = Exercise::getByStatus($status);
         $renderer = new Renderer();
         $view = '../views/exercises/answering.php';
         $renderer->renderView($renderer->createView($view, $data));
@@ -48,5 +48,33 @@ class ExercisesController
         $renderer = new Renderer();
         $view = '../views/exercises/Fields.php';
         $renderer->renderView($renderer->createView($view, $data));
+    }
+    public function manageExercises(): array
+    {
+        $data['title'] = 'Manage exercises';
+        $data['exercises'] = Exercise::getAll();
+
+        $renderer = new Renderer();
+        $view = '../views/exercises/exercises.php';
+        $renderer->renderView($renderer->createView($view, $data));
+        return $data;
+    }
+
+    public function destroyExercise($params): void
+    {
+        Exercise::delete($params['id'][0]);
+        header('Location: /exercises');
+    }
+
+    public function changeExerciseStatus($params): void
+    {
+        $exercise = Exercise::getStatusById($params['id'][0]);
+
+        if ($exercise['status'] == 'answering') {
+            Exercise::setStatus($params['id'][0], 'closed');
+        } else {
+            Exercise::setStatus($params['id'][0], 'answering');
+        }
+        header('Location: /exercises');
     }
 }
