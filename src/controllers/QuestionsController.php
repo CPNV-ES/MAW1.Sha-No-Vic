@@ -24,12 +24,17 @@ class QuestionsController
 
     public function manageQuestions($params): void
     {
-        $data['title'] = 'Manage fields';
-        $data['exercise_id'] = $params['id'][0];
-        $data['questions'] = Question::getQuestionByExercise($params['id'][0]);
-        $renderer = new Renderer();
-        $view = '../views/exercises/Fields.php';
-        $renderer->renderView($renderer->createView($view, $data));
+        $exercise = Exercise::getStatusById($params['id'][0]);
+        if ($exercise['status'] == 'building') {
+            $data['title'] = 'Manage fields';
+            $data['exercise_id'] = $params['id'][0];
+            $data['questions'] = Question::getQuestionByExercise($params['id'][0]);
+            $renderer = new Renderer();
+            $view = '../views/exercises/Fields.php';
+            $renderer->renderView($renderer->createView($view, $data));
+        } else {
+            Renderer::displayError(500);
+        }
     }
     public function editQuestion($params): void
     {
