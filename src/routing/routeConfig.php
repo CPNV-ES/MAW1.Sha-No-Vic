@@ -94,8 +94,8 @@ return [
     ],
     'deleteField' => [ //http://exercice-looper.mycpnv.ch/exercises/:idExercise/fields button : edit field
         'path' => '/exercises/:id/fields/:id',
-        'controller' => 'exercisesController',
-        'method' => 'createField',
+        'controller' => 'QuestionsController',
+        'method' => 'deleteQuestion',
         'httpMethod' => 'DELETE'
     ],
     'showExerciseFullfilments' => [ //http://exercice-looper.mycpnv.ch/exercises button : show results
