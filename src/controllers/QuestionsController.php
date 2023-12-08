@@ -45,4 +45,9 @@ class QuestionsController
         Question::updateQuestion($params['id'][1], $_POST['label'], $_POST['value_kind']);
         header('Location: /exercises/' . $params['id'][0] . '/fields');
     }
+    public function deleteQuestion($params): void
+    {
+        Question::deleteQuestion($params['id'][1]);
+        header('Location: /exercises/' . $params['id'][0] . '/fields');
+    }
 }
