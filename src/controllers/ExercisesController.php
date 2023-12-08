@@ -31,6 +31,7 @@ class ExercisesController
     {
         $data['title'] = 'Manage exercises';
         $data['exercises'] = Exercise::getAll();
+
         $renderer = new Renderer();
         $view = '../views/exercises/exercises.php';
         $renderer->renderView($renderer->createView($view, $data));
@@ -46,10 +47,12 @@ class ExercisesController
     public function changeExerciseStatus($params): void
     {
         $exercise = Exercise::getStatusById($params['id'][0]);
-        if ($exercise == 'answering') {
+
+        if ($exercise['status'] == 'answering') {
             Exercise::setStatus($params['id'][0], 'closed');
         } else {
             Exercise::setStatus($params['id'][0], 'answering');
         }
+        header('Location: /exercises');
     }
 }

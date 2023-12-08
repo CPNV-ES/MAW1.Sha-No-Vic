@@ -87,33 +87,27 @@ class Exercise extends Model
 
     }
 
-    public static function publish($id)
-    {
-        $query = "UPDATE " . self::$table . " SET status = 'answering' WHERE id = " . $id;
-        $stmt = self::getConnection()->prepare($query);
-        $stmt->execute();
-    }
-
-    public static function close($id)
-    {
-        $query = "UPDATE " . self::$table . " SET status = 'closed' WHERE id = " . $id;
-        $stmt = self::getConnection()->prepare($query);
-        $stmt->execute();
-    }
-
     public static function getStatusById($id)
     {
         $query = "SELECT status FROM " . self::$table . " WHERE id = " . $id;
         $stmt = self::getConnection()->prepare($query);
         $stmt->execute();
-        return $stmt->fetch(PDO::FETCH_ASSOC)->toString();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
     public static function setStatus($id, $status)
     {
-        $query = "UPDATE " . self::$table . " SET status = " . $status . " WHERE id = " . $id;
+        $query = "UPDATE " . self::$table . " SET status = '" . $status . "' WHERE id = " . $id;
         $stmt = self::getConnection()->prepare($query);
         $stmt->execute();
+    }
+
+    public function hasQuestions()
+    {
+        $query = "SELECT * FROM questions WHERE exercises_id = " . $this->id;
+        $stmt = self::getConnection()->prepare($query);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 }
 

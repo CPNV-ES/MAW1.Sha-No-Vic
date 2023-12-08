@@ -9,15 +9,19 @@
             </tr>
             </thead>
             <tbody>
-            <?php foreach ($data['exercises'] as  $exercise) : if ($exercise->getStatus()) : ?>
+            <?php foreach ($data['exercises'] as  $exercise) : if ($exercise->getStatus() == "building") : ?>
             <tr>
                 <td class="no-css-td" class="text-widen"><?= $exercise->getTitle() ?></td>
                 <td class="no-css-td">
                     <div class="container widen">
+
+                        <?php if($exercise->hasQuestions()) : ?>
                         <form id="changeExerciseStatus" method="post" class="icon-form action-icon" action="exercises/<?= $exercise->getId() ?>">
                             <input type="hidden" name="_method" value="PUT">
                             <button class="no-css" type="submit"><i class="fa fa-comment purple"></i></button>
                         </form>
+                        <?php endif; ?>
+
                         <a title="Manage fields" href="exercises/<?= $exercise->getId() ?>/fields"><i class="fa fa-edit action-icon"></i></a>
                         <form id="deleteForm" method="post" class="icon-form action-icon" action="exercises/<?= $exercise->getId() ?>">
                             <input type="hidden" name="_method" value="DELETE">
