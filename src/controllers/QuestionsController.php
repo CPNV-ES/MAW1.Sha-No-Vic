@@ -26,7 +26,7 @@ class QuestionsController
     {
         $data['title'] = 'Manage fields';
         $data['exercise_id'] = $params['id'][0];
-        $data['questions'] = Question::GetQuestionByExercise($params['id'][0]);
+        $data['questions'] = Question::getQuestionByExercise($params['id'][0]);
         $renderer = new Renderer();
         $view = '../views/exercises/Fields.php';
         $renderer->renderView($renderer->createView($view, $data));
@@ -35,7 +35,7 @@ class QuestionsController
     {
         $data['title'] = 'Edit question';
         $data['id'] = $params['id'];
-        $data['question'] = Question::GetQuestionById($params['id'][1]);
+        $data['question'] = Question::getQuestionById($params['id'][1]);
         $renderer = new Renderer();
         $view = '../views/questions/edit.php';
         $renderer->renderView($renderer->createView($view, $data));

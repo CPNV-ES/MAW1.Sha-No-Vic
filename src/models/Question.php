@@ -35,17 +35,12 @@ class Question extends Model
         return $this->type;
     }
 
-    public function getAQuestion($id)
-    {
-        //TODO: create function who return a question depending of the id
-    }
-
     /**
      * Get all questions from an exercise
      * @param int $exercise_id
      * @return array of questions
      */
-    public static function GetQuestionByExercise($exercise_id): array
+    public static function getQuestionByExercise($exercise_id): array
     {
         $query = "SELECT id, title, type FROM " . self::$table . " WHERE exercises_id = " . $exercise_id;
         $stmt = self::getConnection()->prepare($query);
@@ -60,7 +55,7 @@ class Question extends Model
         $stmt->execute(['title' => $title, 'type' => $type, 'exercise_id' => $exercise_id]);
         return self::getConnection()->lastInsertId();
     }
-    public static function GetQuestionById($id)
+    public static function getQuestionById($id)
     {
         $query = "SELECT id, title, type FROM " . self::$table . " WHERE id = " . $id;
         $stmt = self::getConnection()->prepare($query);

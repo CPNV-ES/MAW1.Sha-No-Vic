@@ -24,7 +24,7 @@ class ExercisesController
         $data['header']['type'] = "Exercise";
         $data['header']['title'] = Exercise::getTitleById($params["id"][0])['title'];
         $data['exercise_id'] = $params["id"][0];
-        $data['questions'] = Question::GetQuestionByExercise($params["id"][0]);
+        $data['questions'] = Question::getQuestionByExercise($params["id"][0]);
         $renderer = new Renderer();
         $view = '../views/fulfillments/fulfillmentsNew.php';
         $renderer->renderView($renderer->createView($view, $data));
