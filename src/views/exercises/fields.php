@@ -10,7 +10,7 @@
                 </tr>
             </thead>
             <tbody>
-                <?php //dd($data['questions']) ?>
+                <?php //TODO:Move this view in questions folder ?>
                 <?php foreach ($data['questions'] as $question): ?>
                     <tr>
                         <td>
@@ -22,9 +22,13 @@
                         <td>
                             <a title="Edit"
                                 href="/exercises/<?= $data['exercise_id'] ?>/fields/<?= $question->getId(); ?>"><i
-                                    class="fa fa-edit"></i></a>
-                            <a data-confirm="Are you sure?" title="Destroy" rel="nofollow" data-method="delete"
-                                href="fields/218.html"><i class="fa fa-trash"></i></a>
+                                    class="fa fa-edit"></i>
+                            </a>
+                            <form id="deleteQuestion" method="post" class="icon-form action-icon"
+                                action="/exercises/<?= $data['exercise_id'] ?>/fields/<?= $question->getId(); ?>">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <button class="no-css" type="submit"><i class="fa fa-trash purple"></i></button>
+                            </form>
                         </td>
                     </tr>
                 <?php endforeach; ?>
