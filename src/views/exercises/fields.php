@@ -27,18 +27,19 @@
                             <form id="deleteQuestion" method="post" class="icon-form action-icon"
                                 action="/exercises/<?= $data['exercise_id'] ?>/fields/<?= $question->getId(); ?>">
                                 <input type="hidden" name="_method" value="DELETE">
-                                <button class="no-css" type="submit"><i class="fa fa-trash purple"></i></button>
+                                <button data-confirm="Are you sure?" class="no-css" type="submit"><i
+                                        class="fa fa-trash purple"></i></button>
                             </form>
                         </td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
         </table>
-
-        <a data-confirm="Are you sure? You won&#39;t be able to further edit this exercise" class="button"
-            rel="nofollow" data-method="put" href="../960cfc.html?exercise%5Bstatus%5D=answering"><i
-                class="fa fa-comment"></i> Complete and be ready for answers</a>
-
+        <form id="changeExerciseStatus" method="POST" class="" action="/exercises/<?= $data['exercise_id'] ?>">
+            <input type="hidden" name="_method" value="PUT">
+            <button class="button" type="submit"><i class="fa fa-comment"></i> Complete and be ready for
+                answers</button>
+        </form>
     </section>
     <section class="column">
         <h1>New Field</h1>
