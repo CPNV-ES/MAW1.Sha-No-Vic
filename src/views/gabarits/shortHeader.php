@@ -1,5 +1,5 @@
 <body>
-    <header class="heading results">
+    <header class="heading <?= isset($data['color']) ?? NULL; ?>">
         <section class="container">
             <a href="/"><img src="/img/logo.png" /></a>
             <?php if (isset($data['header'])) : ?>
