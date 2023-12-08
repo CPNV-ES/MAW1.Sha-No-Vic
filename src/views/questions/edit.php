@@ -1,8 +1,7 @@
 <main class="container">
     <h1>Editing Field</h1>
     <form action="/exercises/<?= $data['id'][0] ?>/fields/<?= $data['id'][1] ?>" accept-charset="UTF-8" method="post">
-        <input name="utf8" type="hidden" value="✓"><input type="hidden" name="_method" value="patch"><input
-            type="hidden" name="authenticity_token"
+        <input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token"
             value="BC3BYOkO0D/4TQ8ebHUHsJw0KWXP3AyzlMgrNViNr78m9Mv026WH6b6JWHPvjItzxXKZbk6df1+nj2z/IG20pw==">
 
         <div class="field">
