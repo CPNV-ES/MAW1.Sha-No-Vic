@@ -5,9 +5,9 @@
             <?php if (isset($data['header'])) : ?>
             <p><?= $data['header']['type'] ?? NULL; ?> :
                 <?php if(isset($data['header']['link'])) : ?>
-                <a href="<?= $data['header']['link'] ?? NULL ?>">
+                <a href="<?= $data['header']['link'] ?? NULL ?>">   <?php endif; ?>
                     <?= $data['header']['title'] ?? NULL ?></a> <?php endif; ?></p>
-            <?php endif; ?>
+
         </section>
     </header>
 <main class="container">

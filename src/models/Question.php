@@ -15,37 +15,24 @@ use PDO;
 class Question extends Model
 {
     public static $table = 'questions';
-    protected $label;
-    protected $value_kind;
-    protected $exercise_id;
+    protected $id;
+    protected $type;
+    protected $title;
 
-    public function __construct($exercise_id, $label, $value_kind)
-    {
-        $this->exercise_id = $exercise_id;
-        $this->label = $label;
-        $this->value_kind = $value_kind;
-    }
 
     // All getter and setter
-
-    public function getLabel()
+    public function getId()
     {
-        return $this->label;
+        return $this->id;
+    }
+    public function getTitle()
+    {
+        return $this->title;
     }
 
-    function setLabel($newLabel)
+    public function getType()
     {
-        $this->label = $newLabel;
-    }
-
-    public function getValueKind()
-    {
-        return $this->value_kind;
-    }
-
-    function setValueKind($newValueKind)
-    {
-        $this->value_kind = $newValueKind;
+        return $this->type;
     }
 
     public function getAQuestion($id)
@@ -60,7 +47,7 @@ class Question extends Model
      */
     public static function GetQuestionByExercise($exercise_id): array
     {
-        $query = "SELECT * FROM " . self::$table . " WHERE exercises_id = " . $exercise_id;
+        $query = "SELECT id, title, type FROM " . self::$table . " WHERE exercises_id = " . $exercise_id;
         $stmt = self::getConnection()->prepare($query);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_CLASS, self::class);
