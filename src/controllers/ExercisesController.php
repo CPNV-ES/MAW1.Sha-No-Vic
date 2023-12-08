@@ -41,15 +41,6 @@ class ExercisesController
         $exercise = Exercise::save($_POST['title'], 'building');
         header('Location: /exercises/' . $exercise . '/fields');
     }
-
-    public function manageFields($params): void
-    {
-        $data['title'] = 'Manage fields';
-        $data['exercise_id'] = $params[0];
-        $renderer = new Renderer();
-        $view = '../views/exercises/Fields.php';
-        $renderer->renderView($renderer->createView($view, $data));
-    }
     public function manageExercises(): array
     {
         $data['title'] = 'Manage exercises';
@@ -69,6 +60,7 @@ class ExercisesController
 
     public function changeExerciseStatus($params): void
     {
+        //TODO: change get status by id to get exercie by id, it will permit to do the verification with hasfield in the model
         $exercise = Exercise::getStatusById($params['id'][0]);
 
         if ($exercise['status'] == 'answering') {
