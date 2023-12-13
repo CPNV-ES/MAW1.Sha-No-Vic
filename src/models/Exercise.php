@@ -36,6 +36,13 @@ class Exercise extends Model
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_CLASS, self::class);
     }
+    public static function getById($id): array
+    {
+        $query = "SELECT * FROM " . self::$table . " WHERE id = " . $id;
+        $stmt = self::getConnection()->prepare($query);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_CLASS, self::class);
+    }
 
     public static function getAll(): array
     {
