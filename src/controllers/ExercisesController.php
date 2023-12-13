@@ -60,13 +60,11 @@ class ExercisesController
 
     public function changeExerciseStatus($params): void
     {
-        //TODO: change get status by id to get exercie by id, it will permit to do the verification with hasfield in the model
-        $exercise = Exercise::getStatusById($params['id'][0]);
-
-        if ($exercise['status'] == 'answering') {
-            Exercise::setStatus($params['id'][0], 'closed');
-        } else {
+        $exercise = Exercise::getById($params['id'][0]);
+        if ($exercise[0]->hasQuestions() && $exercise[0]->getStatus() == 'building') {
             Exercise::setStatus($params['id'][0], 'answering');
+        } else if ($exercise[0]->hasQuestions() && $exercise[0]->getStatus() == 'answering') {
+            Exercise::setStatus($params['id'][0], 'closed');
         }
         header('Location: /exercises');
     }
