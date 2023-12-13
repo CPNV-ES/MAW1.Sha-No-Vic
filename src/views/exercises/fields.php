@@ -35,11 +35,20 @@
                 <?php endforeach; ?>
             </tbody>
         </table>
-        <form id="changeExerciseStatus" method="POST" class="" action="/exercises/<?= $data['exercise_id'] ?>">
-            <input type="hidden" name="_method" value="PUT">
-            <button class="button" type="submit"><i class="fa fa-comment"></i> Complete and be ready for
-                answers</button>
-        </form>
+        <?php if ($data['questions'] != null): ?>
+            <form id="changeExerciseStatus" method="POST" class="" action="/exercises/<?= $data['exercise_id'] ?>">
+                <input type="hidden" name="_method" value="PUT">
+                <button class="button" data-confirm="Are you sure? You won't be able to further edit this exercise"
+                    type="submit"><i class="fa fa-comment"></i> Complete and be ready for
+                    answers</button>
+            </form>
+        <?php else: ?>
+            <form id="changeExerciseStatus" method="GET" class="" action="javascript:void(0);">
+                <button class="button" data-confirm="Are you sure? You won't be able to further edit this exercise"
+                    type="submit"><i class="fa fa-comment"></i> Complete and be ready for
+                    answers</button>
+            </form>
+        <?php endif; ?>
     </section>
     <section class="column">
         <h1>New Field</h1>
