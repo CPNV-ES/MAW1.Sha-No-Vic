@@ -24,8 +24,10 @@ class FulfillmentsController
 
     public function save($params) {
         $fulfillment_id = Fulfillment::create($params['id'][0]);
-        header('location: /exercises/' . $params['id'][0] . '/fulfillments/' . $fulfillment_id . '/edit');
-
+        foreach ($_POST['fulfillment'] as $key => $answer) {
+            Answer::save($key, $fulfillment_id, $answer);
+        }
+        header('location: /exercises/' . $exercise_id . '/fulfillments/' . $fulfillment_id . '/edit');
     }
 
     public function editExerciseFulfillment($params){
