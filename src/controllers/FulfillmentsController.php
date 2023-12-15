@@ -39,7 +39,7 @@ class FulfillmentsController
         $data['exercise_id'] = $params["id"][0];
         $data['fulfillment_id'] = $params["id"][1];
         $data['questions'] = Question::GetQuestionByExercise($params["id"][0]);
-        $data['fulfillments'] = Fulfillment::getAll($params["id"][1]);
+        $data['answers'] = Answer::getAnswerByFulfillment($params["id"][1]);
         $renderer = new Renderer();
         $view = '../views/fulfillments/fulfillmentsEdit.php';
         $renderer->renderView($renderer->createView($view, $data));
