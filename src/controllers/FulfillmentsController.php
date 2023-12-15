@@ -8,8 +8,10 @@ use App\models\Fulfillment;
 use App\models\Question;
 use App\Services\Renderer;
 
-class FulfillmentsController {
-    public function showFulfillments($params): void {
+class FulfillmentsController
+{
+    public function showFulfillments($params): void
+    {
         $data['header']['type'] = "Exercise";
         $data['header']['title'] = Exercise::getTitleById($params["id"][0])['title'];
         $data['exercise_id'] = $params["id"][0];
