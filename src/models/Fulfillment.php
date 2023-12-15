@@ -36,4 +36,12 @@ class Fulfillment extends Model
         return self::getConnection()->lastInsertId();
     }
 
+    public static function update($id)
+    {
+        $query = "UPDATE " . self::$table . "  WHERE id = :id";
+        $stmt = self::getConnection()->prepare($query);
+        $stmt->execute(['id' => $id]);
+        return $stmt->rowCount();
+    }
+
 }
