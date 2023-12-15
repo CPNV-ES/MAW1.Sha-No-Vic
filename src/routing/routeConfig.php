@@ -25,13 +25,13 @@ return [
         'method' => 'save',
         'httpMethod' => 'POST'
     ],
-    'editExerciseFullfilment' => [ //http://exercice-looper.mycpnv.ch/exercises/29/fulfillments/edit button : save
+    'editExerciseFulfillment' => [ //http://exercice-looper.mycpnv.ch/exercises/29/fulfillments/edit button : save
         'path' => '/exercises/:id/fulfillments/:id/edit',
         'controller' => 'FulfillmentsController',
         'method' => 'editExerciseFulfillment',
         'httpMethod' => 'GET'
     ],
-    'updateExerciseFullfilment' => [ //http://exercice-looper.mycpnv.ch/exercises/29/fulfillments/edit button : save
+    'updateExerciseFulfillment' => [ //http://exercice-looper.mycpnv.ch/exercises/29/fulfillments/edit button : save
         'path' => '/exercises/:id/fulfillments/:id/edit',
         'controller' => 'FulfillmentsController',
         'method' => 'updateExerciseFullfilment',
