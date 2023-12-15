@@ -10,8 +10,7 @@
             <label for="fulfillment_answers_attributes__value"><?= $question->getTitle(); ?></label>
             <input type="text" name="fulfillment[<?= $question->getId(); ?>]" id="fulfillment_answers_attributes__value">
         </div>
-        <?php elseif ($question->getType() == 'single_line_list' || $question->getType() == 'multi_line') : ?>
-        <input type="hidden" value="<?= $question->getId(); ?>" name="fulfillment[answers_attributes][][field_id]" id="fulfillment_answers_attributes__field_id">
+        <?php elseif ($question->getType() == 'single_line_list' || 'multi_line') : ?>
         <div class="field">
             <label for="fulfillment_answers_attributes__value"><?= $question->getTitle(); ?></label>
             <textarea name="fulfillment[<?= $question->getId(); ?>]" id="fulfillment_answers_attributes__value"></textarea>
