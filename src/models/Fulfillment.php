@@ -28,12 +28,12 @@ class Fulfillment extends Model
         return $stmt->fetchAll(PDO::FETCH_CLASS, self::class);
     }
 
-    public static function create($id_exercises){
-
-            $query = "INSERT INTO ". self::$table ." (exercises_id) VALUES (:exercises_id)";
-            $stmt = self::getConnection()->prepare($query);
-            $stmt->execute(['exercises_id' => $id_exercises]);
-            return self::getConnection()->lastInsertId();
-        }
+    public static function create($id_exercises)
+    {
+        $query = "INSERT INTO " . self::$table . " (exercises_id) VALUES (:exercises_id)";
+        $stmt = self::getConnection()->prepare($query);
+        $stmt->execute(['exercises_id' => $id_exercises]);
+        return self::getConnection()->lastInsertId();
+    }
 
 }
