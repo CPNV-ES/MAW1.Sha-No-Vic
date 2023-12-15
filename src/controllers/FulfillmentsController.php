@@ -44,4 +44,13 @@ class FulfillmentsController
         $view = '../views/fulfillments/fulfillmentsEdit.php';
         $renderer->renderView($renderer->createView($view, $data));
     }
+
+    public function updateExerciseFulfillment($params)
+    {
+        $fulfillment_id = $params['id'][1];
+        foreach ($_POST['answers']['attributes'] as $key => $answer) {
+            Answer::update($answer, $fulfillment_id, $key);
+        }
+        header('location: /exercises/' . $params['id'][0] . '/fulfillments/' . $params['id'][1] . '/edit');
+    }
 }
