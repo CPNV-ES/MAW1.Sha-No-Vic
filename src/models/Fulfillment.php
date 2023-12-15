@@ -6,11 +6,12 @@
  * Creation date : 06.10.2023
  * Version : 1.0
  */
+
 namespace App\models;
 
 use Exception;
 use PDO;
-use Exercise;
+use App\models\Exercise;
 
 class Fulfillment extends Model
 {
