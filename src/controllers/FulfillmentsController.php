@@ -22,7 +22,9 @@ class FulfillmentsController
         $renderer->renderView($renderer->createView($view, $data));
     }
 
-    public function save($params) {
+    public function save($params)
+    {
+        $exercise_id = $params['id'][0];
         $fulfillment_id = Fulfillment::create($params['id'][0]);
         foreach ($_POST['fulfillment'] as $key => $answer) {
             Answer::save($key, $fulfillment_id, $answer);
