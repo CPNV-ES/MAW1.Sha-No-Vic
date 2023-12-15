@@ -32,8 +32,8 @@ class FulfillmentsController
         header('location: /exercises/' . $exercise_id . '/fulfillments/' . $fulfillment_id . '/edit');
     }
 
-    public function editExerciseFulfillment($params){
-        //dd($params);
+    public function editExerciseFulfillment($params)
+    {
         $data['header']['type'] = "Exercise";
         $data['header']['title'] = Exercise::getTitleById($params["id"][0])['title'];
         $data['exercise_id'] = $params["id"][0];
