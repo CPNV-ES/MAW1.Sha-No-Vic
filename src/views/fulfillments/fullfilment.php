@@ -1,7 +1,7 @@
-<h1><?= $data['fulfillment']['timestamp'] ?></h1>
+<h1><?= $data['fulfillment']->getTimestamp() ?></h1>
 <dl class="answer">
-    <?php foreach ($data['fulfillment']['query'] as $query):?>
-    <dt><?= $query['question'] ?></dt>
-    <dd><?= $query['answer'] ?></dd>
+    <?php foreach ($data['question'] as $key => $question):?>
+    <dt><?= $question->getTitle() ?></dt>
+    <dd><?= $data['answer'][$key] ?></dd>
     <?php endforeach; ?>
 </dl>

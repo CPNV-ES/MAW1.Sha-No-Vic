@@ -35,9 +35,12 @@ class Question extends Model
         return $this->type;
     }
 
-    public function getAQuestion($id)
+    public static function getAQuestion($id)
     {
-        //TODO: create function who return a question depending of the id
+        $query = "SELECT * FROM " . self::$table . " WHERE id = " . $id;
+        $stmt = self::getConnection()->prepare($query);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_CLASS, self::class);
     }
 
     /**
@@ -50,6 +53,7 @@ class Question extends Model
         $query = "SELECT id, title, type FROM " . self::$table . " WHERE exercises_id = " . $exercise_id;
         $stmt = self::getConnection()->prepare($query);
         $stmt->execute();
+
         return $stmt->fetchAll(PDO::FETCH_CLASS, self::class);
     }
 

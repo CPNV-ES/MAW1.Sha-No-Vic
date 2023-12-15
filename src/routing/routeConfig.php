@@ -98,14 +98,14 @@ return [
         'method' => 'showFulfillments',
         'httpMethod' => 'GET'
     ],
-    'showFulfillments' => [ // no url button : none
-        'path' => '/exercises/:idExercise/fulfillments',
+    'showFulfillments' => [ //http://exercice-looper.mycpnv.ch/exercises button : show results
+        'path' => '/exercises/:id/results',
         'controller' => 'fulfillmentsController',
         'method' => 'showFulfillments',
         'httpMethod' => 'GET'
     ],
     'showFieldFulfillments' => [ // http://exercice-looper.mycpnv.ch/exercises/:idExercise/results/ button : field name
-        'path' => 'exercises/:idExercise/results/:idField',
+        'path' => '/exercises/:id/results/:id',
         'controller' => 'fulfillmentsController',
         'method' => 'showFieldFulfillments',
         'httpMethod' => 'GET'
