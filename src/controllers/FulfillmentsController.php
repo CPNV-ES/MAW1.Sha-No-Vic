@@ -37,6 +37,7 @@ class FulfillmentsController
         $data['header']['type'] = "Exercise";
         $data['header']['title'] = Exercise::getTitleById($params["id"][0])['title'];
         $data['exercise_id'] = $params["id"][0];
+        $data['fulfillment_id'] = $params["id"][1];
         $data['questions'] = Question::GetQuestionByExercise($params["id"][0]);
         $data['fulfillments'] = Fulfillment::getAll($params["id"][1]);
         $renderer = new Renderer();
