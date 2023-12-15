@@ -34,8 +34,8 @@ return [
     'updateExerciseFulfillment' => [ //http://exercice-looper.mycpnv.ch/exercises/29/fulfillments/edit button : save
         'path' => '/exercises/:id/fulfillments/:id/edit',
         'controller' => 'FulfillmentsController',
-        'method' => 'updateExerciseFullfilment',
-        'httpMethod' => 'POST'
+        'method' => 'updateExerciseFulfillment',
+        'httpMethod' => 'PUT'
     ],
     'exercises' => [ //http://exercice-looper.mycpnv.ch/ button : Manage an exercise
         'path' => '/exercises',
