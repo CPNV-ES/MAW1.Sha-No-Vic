@@ -3,7 +3,9 @@
     <p>If you'd like to come back later to finish, simply submit it with blanks</p>
 
 
-        <?php foreach ($data['questions'] as $question) : ?>
+    <form action="/exercises/<?= $data['exercise_id']; ?>/fulfillments/<?= $data['fulfillment_id'] ?>/edit"
+          accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="7d+vB3MFNW/SkvfwldHqj4osZMOnHQmKod4m/iXa4q0V1mFpAat6j3S46ZTxwVYrvPvcdHHbFLYOc1JXVJZT5w==">
+        <input type="hidden" name="_method" value="PUT">
 
         <?php
         foreach ($data['questions'] as $question) : ?>
