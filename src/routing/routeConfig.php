@@ -104,10 +104,28 @@ return [
         'method' => 'showFulfillments',
         'httpMethod' => 'GET'
     ],
+    'showFullfilment' => [ // http://exercice-looper.mycpnv.ch/exercises/:idExercise/results/ button : field name
+        'path' => '/exercises/:id/fulfillments/:id',
+        'controller' => 'fulfillmentsController',
+        'method' => 'showFullfilment',
+        'httpMethod' => 'GET'
+    ],
     'showFieldFulfillments' => [ // http://exercice-looper.mycpnv.ch/exercises/:idExercise/results/ button : field name
         'path' => '/exercises/:id/results/:id',
         'controller' => 'fulfillmentsController',
         'method' => 'showFieldFulfillments',
         'httpMethod' => 'GET'
+    ],
+    'manageFulfillments' => [ // http://exercice-looper.mycpnv.ch/exercises/:idExercise/results/ button : field name
+        'path' => '/exercises/:id/fulfillments',
+        'controller' => 'fulfillmentsController',
+        'method' => 'manageFulfillments',
+        'httpMethod' => 'GET'
+    ],
+    'deleteFulfillment' => [ // http://exercice-looper.mycpnv.ch/exercises/:idExercise/results/ button : field name
+        'path' => '/exercises/:id/fulfillments/:id',
+        'controller' => 'fulfillmentsController',
+        'method' => 'deleteFulfillment',
+        'httpMethod' => 'DELETE'
     ],
 ];

@@ -32,7 +32,6 @@ class Answer extends Model
         $query = "SELECT * FROM answers WHERE fulfillments_id = " . $fulfillment_id;
         $stmt = self::getConnection()->prepare($query);
         $stmt->execute();
-
         return $stmt->fetchAll(PDO::FETCH_CLASS, self::class);
     }
 
@@ -49,5 +48,6 @@ class Answer extends Model
     {
         return $this->answer;
     }
+
 
 }
