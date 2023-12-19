@@ -23,7 +23,6 @@
                     <?php
                     elseif ($answer->getQuestionsId() == $question->getId() && $question->getType(
                         ) == 'single_line_list' || $question->getType() == 'multi_line') : ?>
-                    <p><?php dd($answer->getAnswer()); ?></p>
                         <textarea name="answers[attributes][<?= $question->getId() ?>]"
                                   id="fulfillment_answers_attributes__value">
                             <?php $answer->getAnswer(); ?></textarea>
