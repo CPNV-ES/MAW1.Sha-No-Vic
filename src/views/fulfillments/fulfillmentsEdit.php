@@ -10,31 +10,28 @@
         <?php
         foreach ($data['questions'] as $question) : ?>
 
-            <?php
-            if ($question->getType() == "single_line") : ?>
-                <div class="field">
-                    <label for="answers_attributes__value"><?= $question->getTitle(); ?></label>
-                    <?php
-                    foreach ($data['answers'] as $answer) : ?>
-                        <?php
-                        if ($answer->getQuestionsId() == $question->getId()) : ?>
-                            <input type="text" name="answers[attributes][<?= $question->getId() ?>]"
-                                   id="fulfillment_answers_attributes__value" value="<?= $answer->getAnswer(); ?>">
+            <div class="field">
+                <label for="answers_attributes__value"><?= $question->getTitle(); ?></label>
 
-                        <?php
-                        elseif ($question->getType() == 'single_line_list' || $question->getType() == 'multi_line') : ?>
+                <?php
+                foreach ($data['answers'] as $answer) : ?>
 
-                            <div class="field">
-                                <label for="fulfillment_answers_attributes__value"><?= $question->getTitle(); ?></label>
-                                <textarea name="fulfillment[answers_attributes][<?= $question->getId() ?>]"
-                                          id="fulfillment_answers_attributes__value"
-                                          value="<?= $answer->getAnswer(); ?>"></textarea>
-                            </div>
-                        <?php
-                        endif; ?>
                     <?php
-                    endforeach; ?>
-                </div>
+                    if ($answer->getQuestionsId() == $question->getId() && $question->getType() == "single_line")  : ?>
+                        <input type="text" name="answers[attributes][<?= $question->getId() ?>]"
+                               id="fulfillment_answers_attributes__value" value="<?= $answer->getAnswer(); ?>">
+                    <?php
+                    elseif ($answer->getQuestionsId() == $question->getId() && $question->getType(
+                        ) == 'single_line_list' || $question->getType() == 'multi_line') : ?>
+                    <p><?php dd($answer->getAnswer()); ?></p>
+                        <textarea name="answers[attributes][<?= $question->getId() ?>]"
+                                  id="fulfillment_answers_attributes__value">
+                            <?php $answer->getAnswer(); ?></textarea>
+                    <?php
+                    endif; ?>
+                <?php
+                endforeach; ?>
+            </div>
 
 
         <?php
