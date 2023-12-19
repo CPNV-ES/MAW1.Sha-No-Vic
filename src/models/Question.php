@@ -35,17 +35,12 @@ class Question extends Model
         return $this->type;
     }
 
-    public function getAQuestion($id)
-    {
-        //TODO: create function who return a question depending of the id
-    }
-
     /**
      * Get all questions from an exercise
      * @param int $exercise_id
      * @return array of questions
      */
-    public static function GetQuestionByExercise($exercise_id): array
+    public static function getQuestionByExercise($exercise_id): array
     {
         $query = "SELECT id, title, type FROM " . self::$table . " WHERE exercises_id = " . $exercise_id;
         $stmt = self::getConnection()->prepare($query);
@@ -53,18 +48,30 @@ class Question extends Model
         return $stmt->fetchAll(PDO::FETCH_CLASS, self::class);
     }
 
-    public function save($exercise_id)
+    public static function save($title, $type, $exercise_id)
     {
-        //TODO: create function who save the question in the database
+        $query = "INSERT INTO " . self::$table . " (title, type, exercises_id) VALUES (:title, :type, :exercise_id)";
+        $stmt = self::getConnection()->prepare($query);
+        $stmt->execute(['title' => $title, 'type' => $type, 'exercise_id' => $exercise_id]);
+        return self::getConnection()->lastInsertId();
     }
-
-    public function delete($id)
+    public static function getQuestionById($id)
     {
-        //TODO: create function who delete the question in the database
+        $query = "SELECT id, title, type FROM " . self::$table . " WHERE id = " . $id;
+        $stmt = self::getConnection()->prepare($query);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_CLASS, self::class);
     }
-
-    public function edit($id)
+    public static function updateQuestion($id, $title, $type)
     {
-        //TODO: create function who edit the question in the database
+        $query = "UPDATE " . self::$table . " SET title = :title, type = :type WHERE id = :id";
+        $stmt = self::getConnection()->prepare($query);
+        $stmt->execute(['title' => $title, 'type' => $type, 'id' => $id]);
+    }
+    public static function deleteQuestion($id)
+    {
+        $query = "DELETE FROM " . self::$table . " WHERE id = " . $id;
+        $stmt = self::getConnection()->prepare($query);
+        $stmt->execute();
     }
 }

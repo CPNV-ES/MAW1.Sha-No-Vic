@@ -29,13 +29,29 @@ class Exercise extends Model
      * @return array of exercises
      * @throws Exception
      */
-    public static function getAll($status): array
+    public static function getByStatus($status): array
     {
         $query = "SELECT * FROM " . self::$table . " WHERE status = " . $status;
         $stmt = self::getConnection()->prepare($query);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_CLASS, self::class);
     }
+    public static function getById($id): array
+    {
+        $query = "SELECT * FROM " . self::$table . " WHERE id = " . $id;
+        $stmt = self::getConnection()->prepare($query);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_CLASS, self::class);
+    }
+
+    public static function getAll(): array
+    {
+        $query = "SELECT * FROM " . self::$table;
+        $stmt = self::getConnection()->prepare($query);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_CLASS, self::class);
+    }
+
 
     public function getId()
     {
@@ -69,35 +85,48 @@ class Exercise extends Model
     {
         return $this->modification_date;
     }
+    /**
+     * Save exercises to Database
+     * Return the last inserted id in the DB if new, return the id modified if it was already existing
+     */
+    public static function save($title, $status)
+    {
+        $query = "INSERT INTO " . self::$table . " (title, status) VALUES ('" . $title . "', '" . $status . "')";
+        $stmt = self::getConnection()->prepare($query);
+        $stmt->execute();
+        return self::getConnection()->lastInsertId();
+    }
+    public static function delete($id)
+    {
+        $query = "DELETE FROM " . self::$table . " WHERE id = " . $id;
+        $stmt = self::getConnection()->prepare($query);
+        $stmt->execute();
+
+    }
+
+    public static function getStatusById($id)
+    {
+        $query = "SELECT status FROM " . self::$table . " WHERE id = " . $id;
+        $stmt = self::getConnection()->prepare($query);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public static function setStatus($id, $status)
+    {
+        $query = "UPDATE " . self::$table . " SET status = '" . $status . "' WHERE id = " . $id;
+        $stmt = self::getConnection()->prepare($query);
+        $stmt->execute();
+    }
+
+    public function hasQuestions()
+    {
+        $query = "SELECT * FROM questions WHERE exercises_id = " . $this->id;
+        $stmt = self::getConnection()->prepare($query);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 }
-
-/**
- * Save exercises to Database
- * Return the last inserted id in the DB if new, return the id modified if it was already existing
- */
-function save()
-{/*
-    $pdo = self::$pdo;
-    $query = 'SELECT * FROM exercises WHERE id = ?';
-    $stmt = $pdo->prepare($query);
-    $stmt->execute([$this->id]);
-
-    if ($stmt->fetch() == null) {
-        $query = 'INSERT INTO exercises (id, title, creation_date, modification_date, status) VALUES (?, ?, ?, ?, ?)';
-        $stmt = $pdo->prepare($query);
-        $stmt->execute([$this->id, $this->title, date("Y-m-d H:i:s"), date("Y-m-d H:i:s"), $this->status]);
-
-        return $pdo->lastInsertId();
-    } else {
-        $query = 'UPDATE exercises SET title=?, creation_date=?, modification_date=?, status=? WHERE id=?';
-        $stmt = $pdo->prepare($query);
-        $stmt->execute([$this->title, $this->creation_date, date("Y-m-d H:i:s"), $this->status, $this->id]);
-
-        return $this->id;
-    }*/
-}// TODO: test the save function
-
-
 function beReady()
 {
     //TODO: create a function who change the status of the exercise from building to answering
@@ -111,9 +140,4 @@ function close()
     // once the exercises is closed the "user" can't answer anymore
 }
 
-function delete()
-{
-    // TODO: create function who delete the exercise, question and answers accordingly
 
-
-}

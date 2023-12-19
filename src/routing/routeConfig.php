@@ -40,32 +40,26 @@ return [
     'exercises' => [ //http://exercice-looper.mycpnv.ch/ button : Manage an exercise
         'path' => '/exercises',
         'controller' => 'ExercisesController',
-        'method' => 'index',
+        'method' => 'manageExercises',
         'httpMethod' => 'GET'
     ],
 
     'manageFields' => [ //http://exercice-looper.mycpnv.ch/exercises button : Manage fields
-        'path' => '/exercises/:idExercise/fields',
-        'controller' => 'ExercisesController',
-        'method' => 'manageFields',
+        'path' => '/exercises/:id/fields',
+        'controller' => 'QuestionsController',
+        'method' => 'manageQuestions',
         'httpMethod' => 'GET'
     ],
     'destroyExercise' => [ //http://exercice-looper.mycpnv.ch/exercises http://exercice-looper.mycpnv.ch/exercises/:idExercise/fields button : Destroy 
-        'path' => '/exercises',
+        'path' => '/exercises/:id',
         'controller' => 'exercisesController',
         'method' => 'destroyExercise',
         'httpMethod' => 'DELETE'
     ],
-    'publishExercise' => [ //http://exercice-looper.mycpnv.ch/exercises button : be ready for answers http://exercice-looper.mycpnv.ch/exercises/:idExercise/fields button : complete and be ready for answers
-        'path' => '/exercises',
+    'changeExerciseStatus' => [ //http://exercice-looper.mycpnv.ch/exercises button : be ready for answers http://exercice-looper.mycpnv.ch/exercises/:idExercise/fields button : complete and be ready for answers
+        'path' => '/exercises/:id',
         'controller' => 'exercisesController',
-        'method' => 'publishExercise',
-        'httpMethod' => 'PUT'
-    ],
-    'closeExercise' => [ //http://exercice-looper.mycpnv.ch/exercises button : be ready for answers http://exercice-looper.mycpnv.ch/exercises/:idExercise/fields button : complete and be ready for answers
-        'path' => '/exercises',
-        'controller' => 'exercisesController',
-        'method' => 'publishExercise',
+        'method' => 'changeExerciseStatus',
         'httpMethod' => 'PUT'
     ],
     'newExercise' => [ //http://exercice-looper.mycpnv.ch button : create an exercise
@@ -75,33 +69,33 @@ return [
         'httpMethod' => 'GET'
     ],
     'createExercise' => [ //http://exercice-looper.mycpnv.ch/exercises/new button : create exercise
-        'path' => '/exercises/:idExercise/fields',
+        'path' => '/exercises',
         'controller' => 'exercisesController',
         'method' => 'createExercise',
         'httpMethod' => 'POST'
     ],
-    'createField' => [ //http://exercice-looper.mycpnv.ch/exercises/:idExercise/fields button : create field
-        'path' => '/exercises/:idExercise/fields',
-        'controller' => 'exercisesController',
-        'method' => 'createField',
+    'createQuestion' => [ //http://exercice-looper.mycpnv.ch/exercises/:idExercise/fields button : create field
+        'path' => '/exercises/:id/fields',
+        'controller' => 'QuestionsController',
+        'method' => 'createQuestion',
         'httpMethod' => 'POST'
     ],
     'editField' => [ //http://exercice-looper.mycpnv.ch/exercises/:idExercise/fields button : edit field
-        'path' => 'exercises/:idExercise/fields/:idField/edit',
-        'controller' => 'exercisesController',
-        'method' => 'createField',
+        'path' => '/exercises/:id/fields/:id',
+        'controller' => 'QuestionsController',
+        'method' => 'editQuestion',
         'httpMethod' => 'GET'
     ],
     'updateField' => [ //http://exercice-looper.mycpnv.ch/exercises/:idExercise/fields button : update field
-        'path' => 'exercises/:idExercise/fields/:idField',
-        'controller' => 'exercisesController',
-        'method' => 'createField',
+        'path' => '/exercises/:id/fields/:id',
+        'controller' => 'QuestionsController',
+        'method' => 'updateQuestion',
         'httpMethod' => 'POST'
     ],
     'deleteField' => [ //http://exercice-looper.mycpnv.ch/exercises/:idExercise/fields button : edit field
-        'path' => 'exercises/:idExercise/fields/:idField',
-        'controller' => 'exercisesController',
-        'method' => 'createField',
+        'path' => '/exercises/:id/fields/:id',
+        'controller' => 'QuestionsController',
+        'method' => 'deleteQuestion',
         'httpMethod' => 'DELETE'
     ],
     'showExerciseFullfilments' => [ //http://exercice-looper.mycpnv.ch/exercises button : show results
