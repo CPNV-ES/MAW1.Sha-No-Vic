@@ -20,16 +20,22 @@ return [
         'httpMethod' => 'GET'
     ],
     'saveExerciseFullfilment' => [ //http://exercice-looper.mycpnv.ch/exercises/29/fulfillments/new button : save
-        'path' => '/exercises/:idExercise/fulfillments',
-        'controller' => 'ExercisesController',
-        'method' => 'SaveExerciseFullfilment',
+        'path' => '/exercises/:id/fulfillments',
+        'controller' => 'FulfillmentsController',
+        'method' => 'save',
         'httpMethod' => 'POST'
     ],
-    'editExerciseFullfilment' => [ //http://exercice-looper.mycpnv.ch/exercises/29/fulfillments/new button : save
-        'path' => '/exercises/:idExercise/fulfillments/:id/edit',
-        'controller' => 'ExercisesController',
-        'method' => 'editExerciseFullfilment',
-        'httpMethod' => 'POST'
+    'editExerciseFulfillment' => [ //http://exercice-looper.mycpnv.ch/exercises/29/fulfillments/edit button : save
+        'path' => '/exercises/:id/fulfillments/:id/edit',
+        'controller' => 'FulfillmentsController',
+        'method' => 'editExerciseFulfillment',
+        'httpMethod' => 'GET'
+    ],
+    'updateExerciseFulfillment' => [ //http://exercice-looper.mycpnv.ch/exercises/29/fulfillments/edit button : save
+        'path' => '/exercises/:id/fulfillments/:id/edit',
+        'controller' => 'FulfillmentsController',
+        'method' => 'updateExerciseFulfillment',
+        'httpMethod' => 'PUT'
     ],
     'exercises' => [ //http://exercice-looper.mycpnv.ch/ button : Manage an exercise
         'path' => '/exercises',
