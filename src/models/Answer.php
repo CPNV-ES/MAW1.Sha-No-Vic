@@ -33,7 +33,7 @@ class Answer extends Model
         return $this->answer;
     }
 
-    public function getAnswerByQuestionId($question_id)
+    public static function getAnswerByQuestionId($question_id)
     {
         $query = "SELECT * FROM answers WHERE questions_id = " . $question_id;
         $stmt = self::getConnection()->prepare($query);

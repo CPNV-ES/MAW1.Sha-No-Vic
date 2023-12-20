@@ -15,8 +15,13 @@ class FulfillmentsController
         $data['header']['type'] = "Exercise";
         $data['header']['title'] = Exercise::getTitleById($params["id"][0])['title'];
         $data['exercise_id'] = $params["id"][0];
-        //$data['questions'] = Question::GetQuestionByExercise($params["id"][0]);
+
         $data['fulfillments'] = Fulfillment::getAll($params["id"][0]);
+        foreach ($data['fulfillments'] as $key => $fulfillment) {
+            $data['answers'][$key] = Answer::getAnswerByFulfillment($fulfillment->getId());
+        }
+        $data['questions'] = Question::GetQuestionByExercise($params["id"][0]);
+
         $renderer = new Renderer();
         $view = '../views/fulfillments/results.php';
         $renderer->renderView($renderer->createView($view, $data));
@@ -52,5 +57,60 @@ class FulfillmentsController
             Answer::update($answer, $fulfillment_id, $key);
         }
         header('location: /exercises/' . $params['id'][0] . '/fulfillments/' . $params['id'][1] . '/edit');
+    }
+
+    public function showFieldFulfillments($params)
+    {
+
+        $data['header']['type'] = "Exercise";
+        $data['header']['title'] = Question::getAQuestion($params["id"][1])[0]->getTitle();
+
+        $data['exercise_id'] = $params["id"][0];
+        $data['question'] = Question::getAQuestion($params["id"][1]);
+
+        $data['fulfillments'] = Fulfillment::getAll($params["id"][0]);
+        $data['answers'] = Answer::getAnswerByQuestionId($params["id"][1]);
+        $renderer = new Renderer();
+        $view = '../views/fulfillments/fieldFulfillments.php';
+        $renderer->renderView($renderer->createView($view, $data));
+    }
+
+
+    public function showFullfilment($params)
+    {
+        //dd($params);
+        $data['header']['type'] = "Exercise";
+        $data['header']['title'] = Exercise::getTitleById($params["id"][0])['title'];
+        $data['exercise_id'] = $params["id"][0];
+        $data['questions'] = Question::GetQuestionByExercise($params["id"][0]);
+        $data['fulfillment'] = Fulfillment::getFulfillmentById($params["id"][1]);
+        $data['answers'] = Answer::getAnswerByFulfillment($params["id"][1]);
+
+        $renderer = new Renderer();
+
+        $view = '../views/fulfillments/fullfilment.php';
+
+        $renderer->renderView($renderer->createView($view, $data));
+    }
+
+
+    public function manageFulfillments($params)
+    {
+
+        $data['header']['type'] = "Exercise";
+        $data['header']['title'] = Exercise::getTitleById($params["id"][0])['title'];
+
+        $data['exercise_id'] = $params["id"][0];
+        $data['questions'] = Question::GetQuestionByExercise($params["id"][0]);
+        $data['fulfillments'] = Fulfillment::getAll($params["id"][0]);
+        $renderer = new Renderer();
+        $view = '../views/fulfillments/manageFulfillments.php';
+        $renderer->renderView($renderer->createView($view, $data));
+    }
+
+    public function deleteFulfillment($params)
+    {
+        Fulfillment::delete($params["id"][1]);
+        header('location: /exercises/' . $params["id"][0] . '/fulfillments');
     }
 }
