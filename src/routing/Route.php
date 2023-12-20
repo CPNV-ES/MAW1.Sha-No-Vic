@@ -51,7 +51,6 @@ class Route
     {
 
         if ((!isset($_POST['_method']) && $this->httpMethod == $_SERVER['REQUEST_METHOD']) || $_POST['_method'] == $this->httpMethod) {
-            //dd($this->httpMethod, $_POST['_method'], $_SERVER['REQUEST_METHOD']);
             return true;
         }
         return false;

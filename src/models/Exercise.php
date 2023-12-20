@@ -19,7 +19,6 @@ class Exercise extends Model
     protected $id;
     protected $title;
     protected $status;
-    //TODO: Use object DATETIME instead of string and use it with format to avoid conflict with the database
     protected $creation_date;
     protected $modification_date;
 
@@ -127,17 +126,3 @@ class Exercise extends Model
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 }
-function beReady()
-{
-    //TODO: create a function who change the status of the exercise from building to answering
-    // cannot go backwards in status
-}
-
-function close()
-{
-    //TODO: create a function who change the status of the exercise from answering to closed
-    // cannot go backwards in status
-    // once the exercises is closed the "user" can't answer anymore
-}
-
-
