@@ -33,7 +33,8 @@ class QuestionsController
             $view = '../views/exercises/Fields.php';
             $renderer->renderView($renderer->createView($view, $data));
         } else {
-            Renderer::displayError(500);
+            http_response_code(500);
+            Renderer::displayError('You can\'t edit this exercise because it\'s not in building status');
         }
     }
     public function editQuestion($params): void
