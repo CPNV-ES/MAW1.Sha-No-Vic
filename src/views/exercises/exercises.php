@@ -59,7 +59,7 @@
                             </td>
                             <td class="no-css-td">
                                 <a title="Show results" href="exercises/<?= $exercise->getId() ?>/results"><i
-                                        class="fa fa-chart-bar"></i></a>
+                                        class="fa fa-chart-column"></i></a>
                                 <form id="changeExerciseStatus" method="post" class="icon-form action-icon"
                                     action="exercises/<?= $exercise->getId() ?>">
                                     <input type="hidden" name="_method" value="PUT">
