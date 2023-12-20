@@ -24,7 +24,7 @@ class FulfillmentsController
         $data['questions'] = Question::GetQuestionByExercise($params["id"][0]);
 
         $renderer = new Renderer();
-        $view = '../views/fulfillments/results.php';
+        $view = 'fulfillments/results.php';
         $renderer->renderView($renderer->createView($view, $data));
     }
 
@@ -47,7 +47,7 @@ class FulfillmentsController
         $data['questions'] = Question::GetQuestionByExercise($params["id"][0]);
         $data['answers'] = Answer::getAnswerByFulfillment($params["id"][1]);
         $renderer = new Renderer();
-        $view = '../views/fulfillments/fulfillmentsEdit.php';
+        $view = 'fulfillments/fulfillmentsEdit.php';
         $renderer->renderView($renderer->createView($view, $data));
     }
 
@@ -72,7 +72,7 @@ class FulfillmentsController
         $data['fulfillments'] = Fulfillment::getAll($params["id"][0]);
         $data['answers'] = Answer::getAnswerByQuestionId($params["id"][1]);
         $renderer = new Renderer();
-        $view = '../views/fulfillments/fieldFulfillments.php';
+        $view = 'fulfillments/fieldFulfillments.php';
         $renderer->renderView($renderer->createView($view, $data));
     }
 
@@ -89,7 +89,7 @@ class FulfillmentsController
 
         $renderer = new Renderer();
 
-        $view = '../views/fulfillments/fullfilment.php';
+        $view = 'fulfillments/fullfilment.php';
 
         $renderer->renderView($renderer->createView($view, $data));
     }
@@ -105,7 +105,7 @@ class FulfillmentsController
         $data['questions'] = Question::GetQuestionByExercise($params["id"][0]);
         $data['fulfillments'] = Fulfillment::getAll($params["id"][0]);
         $renderer = new Renderer();
-        $view = '../views/fulfillments/manageFulfillments.php';
+        $view = 'fulfillments/manageFulfillments.php';
         $renderer->renderView($renderer->createView($view, $data));
     }
 

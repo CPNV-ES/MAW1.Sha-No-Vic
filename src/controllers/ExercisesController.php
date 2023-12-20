@@ -14,7 +14,7 @@ class ExercisesController
         $status = "'answering'";
         $data['exercises'] = Exercise::getByStatus($status);
         $renderer = new Renderer();
-        $view = '../views/exercises/answering.php';
+        $view = 'exercises/answering.php';
         $renderer->renderView($renderer->createView($view, $data));
         return $data;
     }
@@ -26,7 +26,7 @@ class ExercisesController
         $data['exercise_id'] = $params["id"][0];
         $data['questions'] = Question::getQuestionByExercise($params["id"][0]);
         $renderer = new Renderer();
-        $view = '../views/fulfillments/fulfillmentsNew.php';
+        $view = 'fulfillments/fulfillmentsNew.php';
         $renderer->renderView($renderer->createView($view, $data));
     }
     public function newExercise(): void
@@ -35,7 +35,7 @@ class ExercisesController
         $data['color'] = 'managing';
 
         $renderer = new Renderer();
-        $view = '../views/exercises/new.php';
+        $view = 'exercises/new.php';
         $renderer->renderView($renderer->createView($view, $data));
     }
     public function createExercise(): void
@@ -50,7 +50,7 @@ class ExercisesController
         $data['exercises'] = Exercise::getAll();
 
         $renderer = new Renderer();
-        $view = '../views/exercises/exercises.php';
+        $view = 'exercises/exercises.php';
         $renderer->renderView($renderer->createView($view, $data));
         return $data;
     }

@@ -12,7 +12,7 @@ class QuestionsController
         $data['title'] = 'New question';
         $data['exercise_id'] = $params[0];
         $renderer = new Renderer();
-        $view = '../views/questions/new.php';
+        $view = 'questions/new.php';
         $renderer->renderView($renderer->createView($view, $data));
     }
 
@@ -31,7 +31,7 @@ class QuestionsController
             $data['exercise_id'] = $params['id'][0];
             $data['questions'] = Question::getQuestionByExercise($params['id'][0]);
             $renderer = new Renderer();
-            $view = '../views/questions/Fields.php';
+            $view = 'questions/Fields.php';
             $renderer->renderView($renderer->createView($view, $data));
         } else {
             http_response_code(500);
@@ -44,7 +44,7 @@ class QuestionsController
         $data['id'] = $params['id'];
         $data['question'] = Question::getQuestionById($params['id'][1]);
         $renderer = new Renderer();
-        $view = '../views/questions/edit.php';
+        $view = 'questions/edit.php';
         $renderer->renderView($renderer->createView($view, $data));
     }
     public function updateQuestion($params): void

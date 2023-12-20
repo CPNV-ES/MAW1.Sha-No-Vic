@@ -28,7 +28,7 @@ class Renderer
     public function createView($view, $data = [])
     {
         //TODO : move the concatenation of the path in a function or other
-        $view = __DIR__ . '/' . $view;
+        $view = self::VIEW_FOLDER . $view;
         $head = Renderer::insertDataInView($this->head, $data);
         $content = Renderer::insertDataInView($view, $data);
         $header = Renderer::insertDataInView($this->header, $data);
