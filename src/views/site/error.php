@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>The page you were looking for doesn't exist (404)</title>
+    <title>An error has occured</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <style>
         body {
@@ -64,10 +64,10 @@
 </head>
 
 <body>
-    <!-- This file lives in public/404.html -->
-
-    <div class="number">404</div>
-    <div class="text"><span>Ooops...</span><br>page not found<br>
+    <div class="number">
+        <?= http_response_code() ?>
+    </div>
+    <div class="text"><span>Ooops...</span><br>An error has occured<br>
         <?php if ($data != null)
             echo ($data[0]) ?>
         </div>
