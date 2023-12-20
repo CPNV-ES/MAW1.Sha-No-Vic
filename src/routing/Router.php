@@ -29,10 +29,16 @@ class Router
     //function to redirect to the right controller
     public function redirectByPath($path)
     {
+        //TODO: passer par la fonction dans route
         $params['id'] = RouteParameterHandler::extractIdFromURL($path);
-        $this->redirect($this->getRouteByPath($path), $params);
+        try {
+            $this->redirect($this->getRouteByPath($path), $params);
+        } catch (\Throwable $th) {
+            http_response_code(404);
+            Renderer::displayError("The route $path does not exist");
+        }
+
     }
-    //TODO: check if the route exists before redirecting(same on name and path)
     public function getRouteByPath($path)
     {
         foreach ($this->routes as $route) {
@@ -54,9 +60,11 @@ class Router
             if (method_exists($controller, $method)) {
                 $controller->$method($params);
             } else {
+                http_response_code(500);
                 Renderer::displayError("The method $method does not exist in the controller $controllerName");
             }
         } else {
+            http_response_code(500);
             Renderer::displayError("The controller $controllerName does not exist");
         }
     }
