@@ -30,7 +30,7 @@ class QuestionsController
             $data['exercise_id'] = $params['id'][0];
             $data['questions'] = Question::getQuestionByExercise($params['id'][0]);
             $renderer = new Renderer();
-            $view = '../views/exercises/Fields.php';
+            $view = '../views/questions/Fields.php';
             $renderer->renderView($renderer->createView($view, $data));
         } else {
             Renderer::displayError(500);
