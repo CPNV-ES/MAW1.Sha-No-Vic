@@ -64,6 +64,10 @@ class Route
                 $url[$key] = ':id';
             }
         }
+        $url = array_filter($url, function ($value, $key){
+            return $key === 0 || !empty($value) || $key === 1;
+        }, ARRAY_FILTER_USE_BOTH);
+
         return implode('/', $url);
     }
 }
