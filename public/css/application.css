@@ -122,3 +122,8 @@ form.icon-form {
 .action-icon {
   padding: 5px 2px 2px 0px;
 }
+
+.exercise-label {
+  margin: auto;
+  margin-left: 2rem;
+}

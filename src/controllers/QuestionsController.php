@@ -26,6 +26,7 @@ class QuestionsController
     {
         $exercise = Exercise::getStatusById($params['id'][0]);
         if ($exercise['status'] == 'building') {
+            $data['color'] = 'managing';
             $data['title'] = 'Manage fields';
             $data['exercise_id'] = $params['id'][0];
             $data['questions'] = Question::getQuestionByExercise($params['id'][0]);

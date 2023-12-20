@@ -32,6 +32,8 @@ class ExercisesController
     public function newExercise(): void
     {
         $data['title'] = 'New exercise';
+        $data['color'] = 'managing';
+
         $renderer = new Renderer();
         $view = '../views/exercises/new.php';
         $renderer->renderView($renderer->createView($view, $data));
@@ -43,6 +45,7 @@ class ExercisesController
     }
     public function manageExercises(): array
     {
+        $data['color'] = 'results';
         $data['title'] = 'Manage exercises';
         $data['exercises'] = Exercise::getAll();
 
