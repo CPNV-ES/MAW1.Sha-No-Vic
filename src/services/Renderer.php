@@ -6,16 +6,17 @@ use Error;
 
 class Renderer
 {
+    const VIEW_FOLDER = '../src/views/';
     private $head;
     private $header;
     private $footer;
 
     //TODO: Modifier le passage des parametres pour que le header puisse être a null
-    public function __construct($head = __DIR__ . '/../views/gabarits/head.php', $header = __DIR__ . '/../views/gabarits/shortHeader.php', $footer = __DIR__ . '/../views/gabarits/footer.php')
+    public function __construct($head = 'gabarits/head.php', $header = 'gabarits/shortHeader.php', $footer = 'gabarits/footer.php')
     {
-        $this->head = $head;
-        $this->header = $header;
-        $this->footer = $footer;
+        $this->head = self::VIEW_FOLDER . $head;
+        $this->header = self::VIEW_FOLDER . $header;
+        $this->footer = self::VIEW_FOLDER . $footer;
     }
 
     /**
@@ -43,6 +44,7 @@ class Renderer
      */
     private static function insertDataInView($view, $data)
     {
+        //dd(scandir('../src/views/site'));
         ob_start();
         include($view);
         return ob_get_clean();
@@ -63,9 +65,9 @@ class Renderer
     public static function displayError($error = null)
     {
         if ($_ENV['APP_DEBUG'] == 'true') {
-            echo (Renderer::insertDataInView(__DIR__ . '/../views/site/404.html.php', [$error]));
+            echo (Renderer::insertDataInView('../src/views/site/error.php', [$error, http_response_code()]));
         } else {
-            echo (Renderer::insertDataInView(__DIR__ . '/../views/site/404.html.php', []));
+            echo (Renderer::insertDataInView('../src/views/site/error.php', [null, http_response_code()]));
         }
     }
 }
