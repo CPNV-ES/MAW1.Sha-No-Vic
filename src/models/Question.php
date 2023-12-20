@@ -35,6 +35,14 @@ class Question extends Model
         return $this->type;
     }
 
+    public static function getAQuestion($id)
+    {
+        $query = "SELECT * FROM " . self::$table . " WHERE id = " . $id;
+        $stmt = self::getConnection()->prepare($query);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_CLASS, self::class);
+    }
+
     /**
      * Get all questions from an exercise
      * @param int $exercise_id
