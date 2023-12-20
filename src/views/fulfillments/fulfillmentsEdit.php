@@ -6,6 +6,7 @@
           accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden"
                                                                                                  name="authenticity_token"
                                                                                                  value="7d+vB3MFNW/SkvfwldHqj4osZMOnHQmKod4m/iXa4q0V1mFpAat6j3S46ZTxwVYrvPvcdHHbFLYOc1JXVJZT5w==">
+
         <input type="hidden" name="_method" value="PUT">
         <?php
         foreach ($data['questions'] as $question) : ?>
@@ -24,8 +25,7 @@
                     elseif ($answer->getQuestionsId() == $question->getId() && ($question->getType(
                             ) == 'single_line_list' || $question->getType() == 'multi_line')) : ?>
                         <textarea name="answers[attributes][<?= $question->getId() ?>]"
-                                  id="fulfillment_answers_attributes__value">
-                            <?php $answer->getAnswer(); ?></textarea>
+                                  id="fulfillment_answers_attributes__value"><?= $answer->getAnswer(); ?></textarea>
                     <?php
                     endif; ?>
                 <?php
