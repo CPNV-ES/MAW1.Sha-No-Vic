@@ -12,6 +12,7 @@ class FulfillmentsController
 {
     public function showFulfillments($params): void
     {
+        $data['color'] = 'results';
         $data['header']['type'] = "Exercise";
         $data['header']['title'] = Exercise::getTitleById($params["id"][0])['title'];
         $data['exercise_id'] = $params["id"][0];
@@ -61,7 +62,7 @@ class FulfillmentsController
 
     public function showFieldFulfillments($params)
     {
-
+        $data['color'] = 'results';
         $data['header']['type'] = "Exercise";
         $data['header']['title'] = Question::getAQuestion($params["id"][1])[0]->getTitle();
 
@@ -78,7 +79,7 @@ class FulfillmentsController
 
     public function showFullfilment($params)
     {
-        //dd($params);
+        $data['color'] = 'results';
         $data['header']['type'] = "Exercise";
         $data['header']['title'] = Exercise::getTitleById($params["id"][0])['title'];
         $data['exercise_id'] = $params["id"][0];
