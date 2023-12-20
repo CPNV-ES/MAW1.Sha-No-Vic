@@ -21,8 +21,8 @@
                         <input type="text" name="answers[attributes][<?= $question->getId() ?>]"
                                id="fulfillment_answers_attributes__value" value="<?= $answer->getAnswer(); ?>">
                     <?php
-                    elseif ($answer->getQuestionsId() == $question->getId() && $question->getType(
-                        ) == 'single_line_list' || $question->getType() == 'multi_line') : ?>
+                    elseif ($answer->getQuestionsId() == $question->getId() && ($question->getType(
+                            ) == 'single_line_list' || $question->getType() == 'multi_line')) : ?>
                         <textarea name="answers[attributes][<?= $question->getId() ?>]"
                                   id="fulfillment_answers_attributes__value">
                             <?php $answer->getAnswer(); ?></textarea>
