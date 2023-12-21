@@ -12,6 +12,7 @@ class FulfillmentsController
 {
     public function showFulfillments($params): void
     {
+        $data['header']['link'] = "/exercises/" . $params["id"][0] . "/results";
         $data['color'] = 'results';
         $data['header']['type'] = "Exercise";
         $data['header']['title'] = Exercise::getTitleById($params["id"][0])['title'];
@@ -41,6 +42,7 @@ class FulfillmentsController
     public function editExerciseFulfillment($params)
     {
         $data['header']['type'] = "Exercise";
+        $data['header']['link'] = "/exercises/" . $params["id"][0] . "/results";
         $data['header']['title'] = Exercise::getTitleById($params["id"][0])['title'];
         $data['exercise_id'] = $params["id"][0];
         $data['fulfillment_id'] = $params["id"][1];
@@ -64,6 +66,7 @@ class FulfillmentsController
     {
         $data['color'] = 'results';
         $data['header']['type'] = "Exercise";
+        $data['header']['link'] = "/exercises/" . $params["id"][0] . "/results";
         $data['header']['title'] = Question::getAQuestion($params["id"][1])[0]->getTitle();
 
         $data['exercise_id'] = $params["id"][0];
@@ -82,6 +85,7 @@ class FulfillmentsController
         $data['color'] = 'results';
         $data['header']['type'] = "Exercise";
         $data['header']['title'] = Exercise::getTitleById($params["id"][0])['title'];
+        $data['header']['link'] = "/exercises/" . $params["id"][0] . "/results";
         $data['exercise_id'] = $params["id"][0];
         $data['questions'] = Question::GetQuestionByExercise($params["id"][0]);
         $data['fulfillment'] = Fulfillment::getFulfillmentById($params["id"][1]);
@@ -100,6 +104,7 @@ class FulfillmentsController
 
         $data['header']['type'] = "Exercise";
         $data['header']['title'] = Exercise::getTitleById($params["id"][0])['title'];
+        $data['header']['link'] = "/exercises/" . $params["id"][0] . "/results";
 
         $data['exercise_id'] = $params["id"][0];
         $data['questions'] = Question::GetQuestionByExercise($params["id"][0]);

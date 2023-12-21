@@ -21,6 +21,7 @@ class ExercisesController
 
     public function takeOneExercise($params): void
     {
+        $data['header']['link'] = "/exercises/" . $params["id"][0] . "/results";
         $data['header']['type'] = "Exercise";
         $data['header']['title'] = Exercise::getTitleById($params["id"][0])['title'];
         $data['exercise_id'] = $params["id"][0];

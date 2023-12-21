@@ -127,3 +127,7 @@ form.icon-form {
   margin: auto;
   margin-left: 2rem;
 }
+
+.hoverchange:hover {
+  color: #606c76;
+}
