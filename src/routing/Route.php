@@ -69,4 +69,16 @@ class Route
 
         return implode('/', $url);
     }
+
+    public static function extractIdFromURL($url)
+    {
+        $url = explode('/', $url);
+        $ids = [];
+        foreach ($url as $key => $value) {
+            if (is_numeric($value)) {
+                $ids[] = $value;
+            }
+        }
+        return $ids;
+    }
 }
