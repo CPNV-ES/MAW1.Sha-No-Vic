@@ -1,4 +1,4 @@
-# Installation Guide for Looper Database
+# Installation Guide for Looper Database on Windows
 
 This guide will help you install MySQL and HeidiSQL using Chocolatey, a package manager for Windows, so you can run .
 
@@ -27,20 +27,20 @@ choco install heidisql
 
 Follow the prompts to complete the installation of HeidiSQL.
 
-### Congratulations!
-
-You have successfully installed MySQL Server and HeidiSQL using Chocolatey. You can now use HeidiSQL to connect to your MySQL database and manage it effectively.
-
-If you have any further questions or need additional assistance, please feel free to ask.
-
 
 __Please make sure to replace `shell` with the appropriate shell type if needed (e.g., `powershell` for PowerShell) and ensure that your system has Chocolatey installed.__
 
 ## Executing database creation script
 
-after [creating your MySQL user](https://dev.mysql.com/doc/refman/8.0/en/create-user.html) executedatabase creation script [DB-BuildScript_1.0.sql](DB-BuildScript_1.0.sql) with [HeidiSQL](#2-install-heidisql-for-database-inspection-not-mandatory).
+after [creating your MySQL user](https://dev.mysql.com/doc/refman/8.0/en/create-user.html) executedatabase creation script [DB-BuildScript_2.0.sql](DB-BuildScript_2.0.sql) with [HeidiSQL](#2-install-heidisql-for-database-inspection-not-mandatory).
 
 If the execution doesn't show any errors you have successfully created the database and it is ready to be connected to your PHP
 
-## Connection to PHP
-**#TODO**
+## Boot it up
+To start the PHP Server : ```php -S localhost:8080 -t public```
+
+Don't forget to specify the desired port instead of 8080
+
+With your preffered browser open the link
+
+## Enjoy the website!
