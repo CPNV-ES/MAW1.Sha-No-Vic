@@ -26,6 +26,7 @@
                             </a>
                             <form id="deleteQuestion" method="post" class="icon-form action-icon"
                                 action="/exercises/<?= $data['exercise_id'] ?>/fields/<?= $question->getId(); ?>">
+                                <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
                                 <input type="hidden" name="_method" value="DELETE">
                                 <button data-confirm="Are you sure?" class="no-css" type="submit"><i
                                         class="fa fa-trash purple"></i></button>
@@ -38,6 +39,7 @@
         <?php if ($data['questions'] != null): ?>
             <form id="changeExerciseStatus" method="POST" class="" action="/exercises/<?= $data['exercise_id'] ?>">
                 <input type="hidden" name="_method" value="PUT">
+                <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
                 <button class="button" data-confirm="Are you sure? You won't be able to further edit this exercise"
                     type="submit"><i class="fa fa-comment"></i> Complete and be ready for answers</button>
             </form>
@@ -51,6 +53,7 @@
     <section class="column">
         <h1>New Field</h1>
         <form action="/exercises/<?= $data['exercise_id'] ?>/fields" accept-charset="UTF-8" method="post">
+            <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
             <div class="field">
                 <label for="field_label">Label</label>
                 <input type="text" name="label" id="field_label" />
