@@ -22,6 +22,7 @@
                                         <form id="changeExerciseStatus" method="post" class="icon-form action-icon"
                                             action="exercises/<?= $exercise->getId() ?>">
                                             <input type="hidden" name="_method" value="PUT">
+                                            <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
                                             <button class="no-css" type="submit"><i class="fa fa-comment purple"></i></button>
                                         </form>
                                     <?php endif; ?>
@@ -30,6 +31,7 @@
                                             class="fa fa-edit action-icon"></i></a>
                                     <form id="deleteForm" method="post" class="icon-form action-icon"
                                         action="exercises/<?= $exercise->getId() ?>">
+                                        <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <button class="no-css" type="submit"><i class="fa fa-trash purple"></i></button>
                                     </form>
@@ -62,6 +64,7 @@
                                         class="fa fa-chart-column"></i></a>
                                 <form id="changeExerciseStatus" method="post" class="icon-form action-icon"
                                     action="exercises/<?= $exercise->getId() ?>">
+                                    <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
                                     <input type="hidden" name="_method" value="PUT">
                                     <button class="no-css" type="submit"><i class="fa fa-minus-circle purple"></i></button>
                                 </form>
@@ -94,6 +97,7 @@
                                         class="fa fa-chart-bar"></i></a>
                                 <form id="deleteForm" method="post" class="icon-form action-icon"
                                     action="exercises/<?= $exercise->getId() ?>">
+                                    <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
                                     <input type="hidden" name="_method" value="DELETE">
                                     <button class="no-css" type="submit"><i class="fa fa-trash purple"></i></button>
                                 </form>

@@ -1,9 +1,7 @@
 <main class="container">
     <h1>Editing Field</h1>
     <form action="/exercises/<?= $data['id'][0] ?>/fields/<?= $data['id'][1] ?>" accept-charset="UTF-8" method="post">
-        <input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token"
-            value="BC3BYOkO0D/4TQ8ebHUHsJw0KWXP3AyzlMgrNViNr78m9Mv026WH6b6JWHPvjItzxXKZbk6df1+nj2z/IG20pw==">
-
+        <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
         <div class="field">
             <label for="field_label">Label</label>
             <input type="text" value="<?= $data['question'][0]->getTitle(); ?>" name="label" id="field_label">

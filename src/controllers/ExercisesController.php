@@ -5,6 +5,7 @@ namespace App\controllers;
 use App\models\Exercise;
 use App\models\Question;
 use App\Services\Renderer;
+use App\Services\FormValidator;
 
 class ExercisesController
 {
@@ -41,7 +42,9 @@ class ExercisesController
     }
     public function createExercise(): void
     {
-        $exercise = Exercise::save($_POST['title'], 'building');
+        if (FormValidator::csrfValidator()) {
+            $exercise = Exercise::save($_POST['title'], 'building');
+        }
         header('Location: /exercises/' . $exercise . '/fields');
     }
     public function manageExercises(): array
@@ -58,17 +61,21 @@ class ExercisesController
 
     public function destroyExercise($params): void
     {
-        Exercise::delete($params['id'][0]);
+        if (FormValidator::csrfValidator()) {
+            Exercise::delete($params['id'][0]);
+        }
         header('Location: /exercises');
     }
 
     public function changeExerciseStatus($params): void
     {
-        $exercise = Exercise::getById($params['id'][0]);
-        if ($exercise[0]->hasQuestions() && $exercise[0]->getStatus() == 'building') {
-            Exercise::setStatus($params['id'][0], 'answering');
-        } else if ($exercise[0]->hasQuestions() && $exercise[0]->getStatus() == 'answering') {
-            Exercise::setStatus($params['id'][0], 'closed');
+        if (FormValidator::csrfValidator()) {
+            $exercise = Exercise::getById($params['id'][0]);
+            if ($exercise[0]->hasQuestions() && $exercise[0]->getStatus() == 'building') {
+                Exercise::setStatus($params['id'][0], 'answering');
+            } else if ($exercise[0]->hasQuestions() && $exercise[0]->getStatus() == 'answering') {
+                Exercise::setStatus($params['id'][0], 'closed');
+            }
         }
         header('Location: /exercises');
     }

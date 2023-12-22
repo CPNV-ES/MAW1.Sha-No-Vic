@@ -7,6 +7,7 @@ use App\models\Exercise;
 use App\models\Fulfillment;
 use App\models\Question;
 use App\Services\Renderer;
+use App\Services\FormValidator;
 
 class FulfillmentsController
 {
@@ -31,10 +32,12 @@ class FulfillmentsController
 
     public function save($params)
     {
-        $exercise_id = $params['id'][0];
-        $fulfillment_id = Fulfillment::create($params['id'][0]);
-        foreach ($_POST['fulfillment'] as $key => $answer) {
-            Answer::save($key, $fulfillment_id, $answer);
+        if (FormValidator::csrfValidator()) {
+            $exercise_id = $params['id'][0];
+            $fulfillment_id = Fulfillment::create($params['id'][0]);
+            foreach ($_POST['fulfillment'] as $key => $answer) {
+                Answer::save($key, $fulfillment_id, $answer);
+            }
         }
         header('location: /exercises/' . $exercise_id . '/fulfillments/' . $fulfillment_id . '/edit');
     }
@@ -55,9 +58,11 @@ class FulfillmentsController
 
     public function updateExerciseFulfillment($params)
     {
-        $fulfillment_id = $params['id'][1];
-        foreach ($_POST['answers']['attributes'] as $key => $answer) {
-            Answer::update($answer, $fulfillment_id, $key);
+        if (FormValidator::csrfValidator()) {
+            $fulfillment_id = $params['id'][1];
+            foreach ($_POST['answers']['attributes'] as $key => $answer) {
+                Answer::update($answer, $fulfillment_id, $key);
+            }
         }
         header('location: /exercises/' . $params['id'][0] . '/fulfillments/' . $params['id'][1] . '/edit');
     }
@@ -116,7 +121,9 @@ class FulfillmentsController
 
     public function deleteFulfillment($params)
     {
-        Fulfillment::delete($params["id"][1]);
+        if (FormValidator::csrfValidator()) {
+            Fulfillment::delete($params["id"][1]);
+        }
         header('location: /exercises/' . $params["id"][0] . '/fulfillments');
     }
 }
