@@ -26,8 +26,16 @@ class QuestionsController
     {
         $exercise = Exercise::getStatusById($params['id'][0]);
         if ($exercise['status'] == 'building') {
+            $data['header']['link'] = "/exercises/" . $params["id"][0] . "/results";
+            if( Exercise::getTitleById($params["id"][0])['title']){
+                $data['header']['type'] = "Exercise";
+                $data['header']['title'] = Exercise::getTitleById($params["id"][0])['title'];
+            }else{
+                $data['header']['staticTitle'] = 'New exercise';
+            }
+
             $data['color'] = 'managing';
-            $data['title'] = 'Manage fields';
+
             $data['exercise_id'] = $params['id'][0];
             $data['questions'] = Question::getQuestionByExercise($params['id'][0]);
             $renderer = new Renderer();
