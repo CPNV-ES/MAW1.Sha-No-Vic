@@ -27,7 +27,9 @@ class Renderer
      */
     public function createView($view, $data = [])
     {
-        //TODO : move the concatenation of the path in a function or other
+        if ($_SERVER['REQUEST_METHOD'] != "POST") {
+            $_SESSION['token'] = md5(uniqid(mt_rand(), true));
+        }
         $view = self::VIEW_FOLDER . $view;
         $head = Renderer::insertDataInView($this->head, $data);
         $content = Renderer::insertDataInView($view, $data);
@@ -44,7 +46,6 @@ class Renderer
      */
     private static function insertDataInView($view, $data)
     {
-        //dd(scandir('../src/views/site'));
         ob_start();
         include($view);
         return ob_get_clean();
