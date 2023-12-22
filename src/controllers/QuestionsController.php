@@ -4,6 +4,7 @@ namespace App\controllers;
 use App\models\Exercise;
 use App\models\Question;
 use App\Services\Renderer;
+use App\Services\FormValidator;
 
 class QuestionsController
 {
@@ -18,7 +19,9 @@ class QuestionsController
 
     public function createQuestion($params): void
     {
-        $question = Question::save($_POST['label'], $_POST['value_kind'], $params['id'][0]);
+        if (FormValidator::csrfValidator()) {
+            Question::save($_POST['label'], $_POST['value_kind'], $params['id'][0]);
+        }
         header('Location: /exercises/' . $params['id'][0] . '/fields');
     }
 
@@ -49,12 +52,16 @@ class QuestionsController
     }
     public function updateQuestion($params): void
     {
-        Question::updateQuestion($params['id'][1], $_POST['label'], $_POST['value_kind']);
+        if (FormValidator::csrfValidator()) {
+            Question::updateQuestion($params['id'][1], $_POST['label'], $_POST['value_kind']);
+        }
         header('Location: /exercises/' . $params['id'][0] . '/fields');
     }
     public function deleteQuestion($params): void
     {
-        Question::deleteQuestion($params['id'][1]);
+        if (FormValidator::csrfValidator()) {
+            Question::deleteQuestion($params['id'][1]);
+        }
         header('Location: /exercises/' . $params['id'][0] . '/fields');
     }
 }
