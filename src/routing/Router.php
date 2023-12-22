@@ -30,7 +30,7 @@ class Router
     public function redirectByPath($path)
     {
         //TODO: passer par la fonction dans route
-        $params['id'] = RouteParameterHandler::extractIdFromURL($path);
+        $params['id'] = $this->extractIdFromURL($path);
         try {
             $this->redirect($this->getRouteByPath($path), $params);
         } catch (\Throwable $th) {
@@ -68,4 +68,17 @@ class Router
             Renderer::displayError("The controller $controllerName does not exist");
         }
     }
+
+    private function extractIdFromURL($url)
+    {
+        $url = explode('/', $url);
+        $ids = [];
+        foreach ($url as $key => $value) {
+            if (is_numeric($value)) {
+                $ids[] = $value;
+            }
+        }
+        return $ids;
+    }
+
 }
