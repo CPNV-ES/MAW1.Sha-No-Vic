@@ -33,7 +33,7 @@ class ExercisesController
     }
     public function newExercise(): void
     {
-        $data['title'] = 'New exercise';
+        $data['header']['staticTitle']= 'New exercise';
         $data['color'] = 'managing';
 
         $renderer = new Renderer();

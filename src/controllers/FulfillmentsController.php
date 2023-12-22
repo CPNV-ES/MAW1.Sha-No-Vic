@@ -23,7 +23,7 @@ class FulfillmentsController
         foreach ($data['fulfillments'] as $key => $fulfillment) {
             $data['answers'][$key] = Answer::getAnswerByFulfillment($fulfillment->getId());
         }
-        $data['questions'] = Question::GetQuestionByExercise($params["id"][0]);
+        $data['questions'] = Question::getQuestionByExercise($params["id"][0]);
 
         $renderer = new Renderer();
         $view = 'fulfillments/results.php';
@@ -49,7 +49,7 @@ class FulfillmentsController
         $data['header']['title'] = Exercise::getTitleById($params["id"][0])['title'];
         $data['exercise_id'] = $params["id"][0];
         $data['fulfillment_id'] = $params["id"][1];
-        $data['questions'] = Question::GetQuestionByExercise($params["id"][0]);
+        $data['questions'] = Question::getQuestionByExercise($params["id"][0]);
         $data['answers'] = Answer::getAnswerByFulfillment($params["id"][1]);
         $renderer = new Renderer();
         $view = 'fulfillments/fulfillmentsEdit.php';
@@ -92,7 +92,7 @@ class FulfillmentsController
         $data['header']['title'] = Exercise::getTitleById($params["id"][0])['title'];
         $data['header']['link'] = "/exercises/" . $params["id"][0] . "/results";
         $data['exercise_id'] = $params["id"][0];
-        $data['questions'] = Question::GetQuestionByExercise($params["id"][0]);
+        $data['questions'] = Question::getQuestionByExercise($params["id"][0]);
         $data['fulfillment'] = Fulfillment::getFulfillmentById($params["id"][1]);
         $data['answers'] = Answer::getAnswerByFulfillment($params["id"][1]);
 
@@ -112,7 +112,7 @@ class FulfillmentsController
         $data['header']['link'] = "/exercises/" . $params["id"][0] . "/results";
 
         $data['exercise_id'] = $params["id"][0];
-        $data['questions'] = Question::GetQuestionByExercise($params["id"][0]);
+        $data['questions'] = Question::getQuestionByExercise($params["id"][0]);
         $data['fulfillments'] = Fulfillment::getAll($params["id"][0]);
         $renderer = new Renderer();
         $view = 'fulfillments/manageFulfillments.php';

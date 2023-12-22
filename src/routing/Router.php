@@ -30,7 +30,7 @@ class Router
     public function redirectByPath($path)
     {
         //TODO: passer par la fonction dans route
-        $params['id'] = RouteParameterHandler::extractIdFromURL($path);
+        $params['id'] = Route::extractIdFromURL($path);
         try {
             $this->redirect($this->getRouteByPath($path), $params);
         } catch (\Throwable $th) {
