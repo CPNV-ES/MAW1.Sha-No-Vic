@@ -71,7 +71,6 @@
         <?php if ($data != null)
             echo ($data[0]) ?>
         </div>
-        <a class="me" href="https://codepen.io/uzcho_/pens/popular/?grid_type=list" target="_blank"></a>
     </body>
 
     </html>
