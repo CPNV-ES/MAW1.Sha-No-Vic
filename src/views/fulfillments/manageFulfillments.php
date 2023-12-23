@@ -14,13 +14,13 @@
         <?php foreach ($data['fulfillments'] as $fulfillment): ?>
             <tr>
                 <td>
-                    <?= $fulfillment->getTimestamp() ?>
+                    <?= htmlspecialchars($fulfillment->getTimestamp(), ENT_QUOTES, 'UTF-8');  ?>
                 </td>
-                <td><a href="fulfillments/<?= $fulfillment->getId() ?>">Show</a></td>
-                <td><a href="fulfillments/<?= $fulfillment->getId() ?>/edit">Edit</a></td>
+                <td><a href="fulfillments/<?= htmlspecialchars($fulfillment->getId(), ENT_QUOTES, 'UTF-8'); ?>">Show</a></td>
+                <td><a href="fulfillments/<?= htmlspecialchars($fulfillment->getId(), ENT_QUOTES, 'UTF-8'); ?>/edit">Edit</a></td>
                 <td>
                     <form id="destroyFulfillmentForm" method="post" class="icon-form action-icon"
-                        action="fulfillments/<?= $fulfillment->getId() ?>">
+                        action="fulfillments/<?= htmlspecialchars($fulfillment->getId(), ENT_QUOTES, 'UTF-8'); ?>">
                         <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
                         <input type="hidden" name="_method" value="DELETE">
                         <a href="#" onclick="document.getElementById('destroyFulfillmentForm').submit();">Destroy</a>

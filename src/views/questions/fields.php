@@ -14,18 +14,18 @@
                 <?php foreach ($data['questions'] as $question): ?>
                     <tr>
                         <td>
-                            <?= $question->getTitle(); ?>
+                            <?= htmlspecialchars($question->getTitle() , ENT_QUOTES, 'UTF-8'); ?>
                         </td>
                         <td>
-                            <?= $question->getType(); ?>
+                            <?= htmlspecialchars($question->getType() , ENT_QUOTES, 'UTF-8') ?>
                         </td>
                         <td>
                             <a title="Edit"
-                                href="/exercises/<?= $data['exercise_id'] ?>/fields/<?= $question->getId(); ?>"><i
+                                href="/exercises/<?= htmlspecialchars($data['exercise_id'], ENT_QUOTES, 'UTF-8') ?>/fields/<?= htmlspecialchars( $question->getId() , ENT_QUOTES, 'UTF-8') ?>"><i
                                     class="fa fa-edit"></i>
                             </a>
                             <form id="deleteQuestion" method="post" class="icon-form action-icon"
-                                action="/exercises/<?= $data['exercise_id'] ?>/fields/<?= $question->getId(); ?>">
+                                action="/exercises/<?= htmlspecialchars($data['exercise_id'], ENT_QUOTES, 'UTF-8') ?>/fields/<?= htmlspecialchars($question->getId(), ENT_QUOTES, 'UTF-8') ?>">
                                 <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
                                 <input type="hidden" name="_method" value="DELETE">
                                 <button data-confirm="Are you sure?" class="no-css" type="submit"><i
@@ -37,7 +37,7 @@
             </tbody>
         </table>
         <?php if ($data['questions'] != null): ?>
-            <form id="changeExerciseStatus" method="POST" class="" action="/exercises/<?= $data['exercise_id'] ?>">
+            <form id="changeExerciseStatus" method="POST" class="" action="/exercises/<?= htmlspecialchars($data['exercise_id'], ENT_QUOTES, 'UTF-8') ?>">
                 <input type="hidden" name="_method" value="PUT">
                 <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
                 <button class="button" data-confirm="Are you sure? You won't be able to further edit this exercise"
@@ -52,7 +52,7 @@
     </section>
     <section class="column">
         <h1>New Field</h1>
-        <form action="/exercises/<?= $data['exercise_id'] ?>/fields" accept-charset="UTF-8" method="post">
+        <form action="/exercises/<?= htmlspecialchars($data['exercise_id'], ENT_QUOTES, 'UTF-8') ?>/fields" accept-charset="UTF-8" method="post">
             <input type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
             <div class="field">
                 <label for="field_label">Label</label>

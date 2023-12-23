@@ -3,8 +3,8 @@
     foreach ($data['exercises'] as $exercise): ?>
         <li class="row">
             <div class="column card">
-                <div class="title"><?= $exercise->getTitle(); ?></div>
-                <a class="button" href="/exercises/<?= $exercise->getId()?>/fulfillments/new">Take it</a>
+                <div class="title"><?= htmlspecialchars($exercise->getTitle(), ENT_QUOTES, 'UTF-8');  ?></div>
+                <a class="button" href="/exercises/<?= htmlspecialchars($exercise->getId(), ENT_QUOTES, 'UTF-8'); ?>/fulfillments/new">Take it</a>
             </div>
         </li>
     <?php
