@@ -1,6 +1,6 @@
 <main class="container">
     <h1>Your take</h1>
-    <p>If you'd like to come back later to finish, simply submit it with blanks</p>
+    <p>Bookmark this page, it's yours. You'll be able to come back later to finish.</p>
 
     <form action="/exercises/<?= $data['exercise_id']; ?>/fulfillments/<?= $data['fulfillment_id'] ?>/edit"
         accept-charset="UTF-8" method="post">
