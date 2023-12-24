@@ -3,7 +3,7 @@
     <tr>
         <th>Take</th>
         <?php foreach ($data['questions'] as $question) : ?>
-      <th><a href="/exercises/<?= htmlspecialchars($data['exercise_id'], ENT_QUOTES, 'UTF-8');  ?>/results/<?= htmlspecialchars($question->getId(), ENT_QUOTES, 'UTF-8'); ?>"><?= htmlspecialchars($question->getTitle(), ENT_QUOTES, 'UTF-8'); ?></a></th>
+      <th><a href="/exercises/<?= htmlspecialchars($data['exercise_id'], ENT_QUOTES, 'UTF-8') ?>/results/<?= htmlspecialchars($question->getId(), ENT_QUOTES, 'UTF-8') ?>"><?= htmlspecialchars($question->getTitle(), ENT_QUOTES, 'UTF-8') ?></a></th>
         <?php endforeach; ?>
     </tr>
   </thead>
@@ -11,7 +11,7 @@
 
   <?php foreach ($data['fulfillments'] as $key => $fulfillment):?>
       <tr>
-          <td><a href="fulfillments/<?= htmlspecialchars($fulfillment->getId(), ENT_QUOTES, 'UTF-8');  ?>"><?= htmlspecialchars($fulfillment->getTimestamp(), ENT_QUOTES, 'UTF-8'); ?></a></td>
+          <td><a href="fulfillments/<?= htmlspecialchars($fulfillment->getId(), ENT_QUOTES, 'UTF-8') ?>"><?= htmlspecialchars($fulfillment->getTimestamp(), ENT_QUOTES, 'UTF-8') ?></a></td>
             <?php foreach ($data['answers'][$key] as $answer) : ?>
                 <td class="answer"><i
                     <?php if(strlen($answer->getAnswer()) >= 10)
