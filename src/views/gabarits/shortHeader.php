@@ -4,7 +4,7 @@
             <a href="/"><img src="/img/logo.png" /></a>
             <p class="exercise-label"><?= $data['header']['type'] ? htmlspecialchars($data['header']['type'] , ENT_QUOTES, 'UTF-8') . " :" : NULL; ?><b>
                 <a href="<?= htmlspecialchars($data['header']['link'] , ENT_QUOTES, 'UTF-8') ?? NULL ?>">
-                    <?= htmlspecialchars($data['header']['title'] , ENT_QUOTES, 'UTF-8') ?? NULL ?></b></a><?= htmlspecialchars($data['header']['staticTitle'] , ENT_QUOTES, 'UTF-8') ?? NULL ?></p>
+                    <?= htmlspecialchars($data['header']['title'] , ENT_QUOTES, 'UTF-8') ?? NULL ?></b></a><?= isset($data['header']['staticTitle']) ? htmlspecialchars($data['header']['staticTitle'], ENT_QUOTES, 'UTF-8') : NULL ?></p>
         </section>
     </header>
 <main class="container">
