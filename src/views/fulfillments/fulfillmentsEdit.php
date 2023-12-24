@@ -39,7 +39,7 @@
         endforeach; ?>
 
         <div class="actions">
-            <input type="submit" name="commit" value="Update" data-disable-with="Save">
+            <input type="submit" name="commit" value="Save" data-disable-with="Save">
         </div>
     </form>
 
