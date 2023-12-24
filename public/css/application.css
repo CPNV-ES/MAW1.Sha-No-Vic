@@ -1,0 +1,133 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+
+
+
+
+ */
+
+
+
+header.dashboard .container {
+  text-align: center;
+  font-size: 3rem;
+  color: white;
+  padding: 2rem;
+}
+
+header.dashboard .container h1 {
+  letter-spacing: 1.1rem;
+}
+
+div.dashboard {
+  margin-top: 2rem;
+}
+
+
+.answering {
+  border-color: rgba(155, 77, 202, 1);
+  background-color: rgba(155, 77, 202, 1);
+}
+.managing {
+  border-color: rgba(224, 164, 88, 1);
+  background-color: rgba(224, 164, 88, 1);
+}
+.results {
+  border-color: rgba(65, 157, 120, 1);
+  background-color: rgba(65, 157, 120, 1);
+}
+
+header {
+  background-color: rgba(155, 77, 202, 1);
+}
+header.other {
+  background-color: rgba(181, 68, 110, 1);
+}
+header.answering {
+  background-color: rgba(155, 77, 202, 1);
+}
+header.managing {
+  background-color: rgba(224, 164, 88, 1);
+}
+header.results {
+  background-color: rgba(65, 157, 120, 1);
+}
+
+
+table.records td:last-child {
+  text-align: right;
+}
+
+
+form.icon-form {
+  display: inline-block; /* Ensure the form takes up only as much width as necessary */
+}
+form.icon-form button {
+  padding: 0; /* Remove default button padding */
+  border: none; /* Remove default button border */
+  cursor: pointer;
+}
+form.icon-form i {
+  font-size: 16px;
+  color: white;
+}
+
+button.no-css {
+  background-color: white;
+  border: none;
+  padding: 0;
+  margin-bottom: 0;
+}
+form.icon-form i.purple{
+  color: rgba(155, 77, 202, 1);
+}
+
+form.icon-form i.purple:hover {
+  color: #606c76;
+}
+
+.container.widen {
+  display: flex;
+  justify-content: center; /* Horizontally center the content */
+  align-items: center; /* Vertically center the content */
+  text-align: center; /* Center inline elements within the container */
+}
+
+/* Add any additional styling as needed */
+.container.widen {
+  display: flex;
+  justify-content: center; /* Horizontally center the content */
+  align-items: center; /* Vertically center the content */
+  text-align: center; /* Center inline elements within the container */
+}
+
+form.icon-form {
+  margin-bottom: 0;
+}
+
+.no-css-td {
+  padding: 0;
+}
+
+.action-icon {
+  padding: 5px 2px 2px 0px;
+}
+
+.exercise-label {
+  margin: auto;
+  margin-left: 2rem;
+}
+
+.hoverchange:hover {
+  color: #606c76;
+}

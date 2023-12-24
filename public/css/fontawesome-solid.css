@@ -1,0 +1,18 @@
+/*!
+ * Font Awesome Free 5.9.0 by @fontawesome - https://fontawesome.com
+ * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
+ */
+@font-face {
+  font-family: 'Font Awesome 5 Free';
+  font-style: normal;
+  font-weight: 900;
+  font-display: auto;
+  src: url(/assets/fa-solid-900-d5342ae679d7064d475403ce5fe05d80f1a0abe5881f729ee0e3272a9c355f3b.eot);
+  src: url(/assets/fa-solid-900-d5342ae679d7064d475403ce5fe05d80f1a0abe5881f729ee0e3272a9c355f3b.eot?#iefix) format("embedded-opentype"), url(/assets/fa-solid-900-cd398be1a91817126cef10224738e624358edf6f08043abad7e60c1aaeccc8d0.woff2) format("woff2"), url(/assets/fa-solid-900-c1450cddfd98668e6e593e2d26f11b4c43faaccb5f033b0b50ea6f1ce7bf4b58.woff) format("woff"), url(/assets/fa-solid-900-9313de7304bef452ff5ac93e0f9ca48c3971d2fbb502c3fa1e2c2ea1f91ad853.ttf) format("truetype"), url(/assets/fa-solid-900-4ee1b170ff51b7fda11acef551d1ef492c0ebc1aff8e5712d3e30fcbb835776d.svg#fontawesome) format("svg");
+}
+/* line 14, /home/exe_looper/exercice-looper.mycpnv.ch/releases/20200928145309/app/assets/stylesheets/fontawesome-solid.scss */
+.fa,
+.fas {
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+}
