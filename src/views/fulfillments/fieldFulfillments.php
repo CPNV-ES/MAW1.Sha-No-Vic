@@ -1,4 +1,4 @@
-<h1><?= $data['question'][0]->getTitle() ?></h1>
+<h1><?= htmlspecialchars($data['question'][0]->getTitle(), ENT_QUOTES, 'UTF-8') ?></h1>
 
 
 <table>

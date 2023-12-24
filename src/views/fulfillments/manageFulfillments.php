@@ -1,5 +1,5 @@
 <h1>Fulfillments for
-    <?= $data['header']['title'] ?>
+    <?= htmlspecialchars($data['header']['title'], ENT_QUOTES, 'UTF-8') ?>
 </h1>
 
 <table>
