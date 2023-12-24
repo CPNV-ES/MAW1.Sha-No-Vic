@@ -16,9 +16,9 @@
                 <td class="answer"><i
                     <?php if(strlen($answer->getAnswer()) >= 10)
                         echo 'class="fa fa-check-double filled"';
-                    elseif(strlen($answer->getAnswer()) == 0 )
+                    elseif(strlen($answer->getAnswer()) == 0 || $answer->getAnswer() === null )
                         echo 'class="fa fa-times empty"';
-                    elseif (strlen($answer->getAnswer()) < 10 || $answer->getAnswer() !== null)
+                    elseif (strlen($answer->getAnswer()) < 10)
                         echo 'class="fa fa-check short"'; ?>
             ></i></td>
             <?php endforeach; ?>
